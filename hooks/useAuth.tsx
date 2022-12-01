@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   // Persisting the user
   useEffect(
     () =>
-      onAuthStateChanged(auth, (user) => {
+      onAuthStateChanged(auth, (user) => { // param 1: auth instance, param 2: callback
         if (user) {
           // Logged in...
           setUser(user)

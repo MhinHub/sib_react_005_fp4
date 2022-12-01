@@ -11,7 +11,7 @@ import requests from '../utils/requests'
 import useList from '../hooks/useList'
 
 interface Props {
-  netflixOriginals: Movie[]
+  mouveeBanner: Movie[]
   trendingNow: Movie[]
   topRated: Movie[]
   actionMovies: Movie[]
@@ -22,7 +22,7 @@ interface Props {
 }
 
 const Home = ({
-  netflixOriginals,
+  mouveeBanner,
   actionMovies,
   comedyMovies,
   documentaries,
@@ -38,16 +38,33 @@ const Home = ({
 
   if (loading) return null
 
+  const getDeviceType = () => {
+    const ua = navigator.userAgent;
+    if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+      return "tablet";
+    }
+    if (
+      /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+        ua
+      )
+    ) {
+      return "mobile";
+    }
+    return "desktop";
+  };
+
+  console.log('device type', getDeviceType())
+
   return (
     <div className={`relative h-screen bg-gradient-to-b lg:h-[140vh] ${showModal && '!h-screen overflow-hidden'}`}>
       <Head>
-        <title>Home - Netflix</title>
+        <title>Home - Mouvee</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />
-      <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
-        <Banner netflixOriginals={netflixOriginals} />
+      <main className="relative px-4 pb-24 lg:space-y-24 lg:px-16">
+        <Banner mouveeBanner={mouveeBanner} />
         <section className="md:space-y-24">
           <Row title="Trending Now" movies={trendingNow} />
           <Row title="Top Rated" movies={topRated} />
@@ -69,7 +86,7 @@ export default Home
 
 export const getServerSideProps = async () => {
   const [
-    netflixOriginals,
+    mouveeBanner,
     trendingNow,
     topRated,
     actionMovies,
@@ -78,7 +95,7 @@ export const getServerSideProps = async () => {
     romanceMovies,
     documentaries,
   ] = await Promise.all([
-    fetch(requests.fetchNetflixOriginals).then((res) => res.json()),
+    fetch(requests.fetchMouveeBanner).then((res) => res.json()),
     fetch(requests.fetchTrending).then((res) => res.json()),
     fetch(requests.fetchTopRated).then((res) => res.json()),
     fetch(requests.fetchActionMovies).then((res) => res.json()),
@@ -90,7 +107,7 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      netflixOriginals: netflixOriginals.results,
+      mouveeBanner: mouveeBanner.results,
       trendingNow: trendingNow.results,
       topRated: topRated.results,
       actionMovies: actionMovies.results,

@@ -23,7 +23,7 @@ function Thumbnail({ movie }: Props) {
       }}
     >
       <Image
-        src={`https://image.tmdb.org/t/p/w500${
+        src={`https://image.tmdb.org/t/p/w342${
           movie.backdrop_path || movie.poster_path
         }`}
         className="rounded-sm object-cover md:rounded"

@@ -50,7 +50,7 @@ function Modal() {
 
     async function fetchMovie() {
       const data = await fetch(
-        `https://api.themoviedb.org/3/${movie?.media_type === 'tv' ? 'tv' : 'movie'}/${movie?.id}?api_key=864e1e0a317a41793bbdbda61ad01288&language=en-US&append_to_response=videos`
+        `https://api.themoviedb.org/3/${movie?.media_type === 'tv' ? 'tv' : 'movie'}/${movie?.id}?api_key=864e1e0a317a41793bbdbda61ad01288&language=id&append_to_response=videos`
       )
         .then((response) => response.json())
         .catch((err) => console.log(err.message))

@@ -30,7 +30,7 @@ function Login() {
   return (
     <div className="relative flex h-screen w-screen flex-col bg-black md:items-center md:justify-center md:bg-transparent">
       <Head>
-        <title>Netflix</title>
+        <title>Mouvee</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Image
@@ -89,7 +89,7 @@ function Login() {
         </button>
 
         <div className="text-[gray]">
-          New to Netflix?{' '}
+          New to Mouvee?{' '}
           <button
             type="submit"
             className="text-white hover:underline"
