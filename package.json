@@ -1,7 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "open": "sleep 10 && xdg-open http://localhost:3000",
+    "port": "npx kill-port 3000",
+    "dev": "npm run port && next dev -p 3000 & npm run open",
     "build": "next build",
     "start": "next start"
   },
