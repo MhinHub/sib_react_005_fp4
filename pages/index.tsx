@@ -1,6 +1,7 @@
 import Head from 'next/head'
-import { useRecoilValue } from 'recoil'
-import { modalState, movieState } from '../atoms/modalAtom'
+// import { useRecoilValue } from 'recoil'
+// import { modalState, movieState } from '../atoms/modalAtom'
+import useStore from '../core/store'
 import Banner from '../components/Banner'
 import Header from '../components/Header'
 import Modal from '../components/Modal'
@@ -32,7 +33,8 @@ const Home = ({
   trendingNow,
 }: Props) => {
   const { loading, user } = useAuth()
-  const showModal = useRecoilValue(modalState)
+  // const showModal = useRecoilValue(modalState)
+  const showModal = useStore((state: any) => state.modalState)
 
   const list = useList(user?.uid)
 

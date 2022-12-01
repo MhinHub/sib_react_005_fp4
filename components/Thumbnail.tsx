@@ -1,6 +1,8 @@
 import Image from 'next/image'
-import { useRecoilState } from 'recoil'
-import { modalState, movieState } from '../atoms/modalAtom'
+// import { useRecoilState } from 'recoil'
+// import { modalState, movieState } from '../atoms/modalAtom'
+import useStore from '../core/store'
+import shallow from 'zustand/shallow'
 import { Movie } from '../typings'
 import { DocumentData } from 'firebase/firestore'
 
@@ -11,8 +13,16 @@ interface Props {
 }
 
 function Thumbnail({ movie }: Props) {
-  const [showModal, setShowModal] = useRecoilState(modalState)
-  const [currentMovie, setCurrentMovie] = useRecoilState(movieState)
+  // const [showModal, setShowModal] = useRecoilState(modalState)
+  // const [currentMovie, setCurrentMovie] = useRecoilState(movieState)
+
+  const { setModalState: setShowModal, setMovieState: setCurrentMovie } = useStore(
+    (state: any) => ({
+      setModalState: state.setModalState,
+      setMovieState: state.setMovieState
+    }),
+    shallow
+  )
 
   return (
     <div
@@ -23,9 +33,8 @@ function Thumbnail({ movie }: Props) {
       }}
     >
       <Image
-        src={`https://image.tmdb.org/t/p/w342${
-          movie.backdrop_path || movie.poster_path
-        }`}
+        src={`https://image.tmdb.org/t/p/w342${movie.backdrop_path || movie.poster_path
+          }`}
         className="rounded-sm object-cover md:rounded"
         fill
         alt="Mouvee thumbnail"

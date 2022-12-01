@@ -19,8 +19,10 @@ import { useEffect, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import { FaPlay } from 'react-icons/fa'
 import ReactPlayer from 'react-player/lazy'
-import { useRecoilState } from 'recoil'
-import { modalState, movieState } from '../atoms/modalAtom'
+// import { useRecoilState } from 'recoil'
+// import { modalState, movieState } from '../atoms/modalAtom'
+import shallow from 'zustand/shallow'
+import useStore from '../core/store'
 import { db } from '../firebase'
 import useAuth from '../hooks/useAuth'
 import { Element, Genre, Movie } from '../typings'
@@ -28,8 +30,21 @@ import axios from 'axios'
 import { GetServerSideProps } from 'next'
 
 function Modal() {
-  const [showModal, setShowModal] = useRecoilState(modalState)
-  const [movie, setMovie] = useRecoilState(movieState)
+  // const [showModal, setShowModal] = useRecoilState(modalState)
+  // const [movie, setMovie] = useRecoilState(movieState)
+
+  const { modalState: showModal, setModalState: setShowModal } = useStore(
+    (state: any) => ({
+      modalState: state.modalState,
+      setModalState: state.setModalState
+    }),
+    shallow
+  )
+
+  const movie = useStore((state: any) => state.movieState)
+
+  console.log('Modal movie', movie)
+
   const [trailer, setTrailer] = useState('')
   const [genres, setGenres] = useState<Genre[]>([])
   const [muted, setMuted] = useState(true)

@@ -2,17 +2,21 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { Movie } from '../typings'
 import { InformationCircleIcon } from '@heroicons/react/solid'
-import { useRecoilState } from 'recoil'
-import { modalState, movieState } from '../atoms/modalAtom'
+// import { useRecoilState } from 'recoil'
+// import { modalState, movieState } from '../atoms/modalAtom'
+import useStore from '../core/store'
 
 interface Props {
   mouveeBanner: Movie[]
 }
 
 function Banner({ mouveeBanner }: Props) {
+  // const [showModal, setShowModal] = useRecoilState(modalState)
+  // const [currentMovie, setCurrentMovie] = useRecoilState(movieState)
+  const setShowModal = useStore((state: any) => state.setShowModal)
+  const setCurrentMovie = useStore((state: any) => state.setCurrentMovie)
+
   const [movie, setMovie] = useState<Movie | null>(null)
-  const [showModal, setShowModal] = useRecoilState(modalState)
-  const [currentMovie, setCurrentMovie] = useRecoilState(movieState)
 
   const baseUrl = 'https://image.tmdb.org/t/p/original/'
 
