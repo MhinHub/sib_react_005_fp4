@@ -16,10 +16,19 @@ function Banner({ mouveeBanner }: Props) {
 
   const baseUrl = 'https://image.tmdb.org/t/p/original/'
 
+  // const truncate = (str: string, n: number) => {
+  //   return str?.length > n ? str.substr(0, n - 1) + '...' : str
+  // }
+
+  // movieBanner changes automatically every 10 seconds
   useEffect(() => {
-    setMovie(
-      mouveeBanner[Math.floor(Math.random() * mouveeBanner.length)]
-    )
+    const interval = setInterval(() => {
+      setMovie(
+        mouveeBanner[Math.floor(Math.random() * mouveeBanner.length - 1)]
+      )
+    }, 15000)
+
+    return () => clearInterval(interval)
   }, [mouveeBanner])
 
   return (
