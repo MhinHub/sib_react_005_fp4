@@ -24,6 +24,8 @@ import { modalState, movieState } from '../atoms/modalAtom'
 import { db } from '../firebase'
 import useAuth from '../hooks/useAuth'
 import { Element, Genre, Movie } from '../typings'
+import axios from 'axios'
+import { GetServerSideProps } from 'next'
 
 function Modal() {
   const [showModal, setShowModal] = useRecoilState(modalState)
@@ -49,17 +51,19 @@ function Modal() {
     if (!movie) return
 
     async function fetchMovie() {
-      const data = await fetch(
-        `https://api.themoviedb.org/3/${movie?.media_type === 'tv' ? 'tv' : 'movie'}/${movie?.id}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=id&append_to_response=videos`
+      const { data } = await axios.get(
+        `https://api.themoviedb.org/3/${movie?.media_type === 'tv' ? 'tv' : 'movie'}/${movie?.id}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&append_to_response=videos`
       )
-        .then((response) => response.json())
-        .catch((err) => console.log(err.message))
+
+      console.log('Data api video modal', data)
 
       if (data?.videos) {
         const index = data.videos.results.findIndex(
           (element: Element) => element.type === 'Trailer'
         )
         setTrailer(data.videos?.results[index]?.key)
+      } else {
+        setTrailer('video disabled')
       }
       if (data?.genres) {
         setGenres(data.genres)
@@ -121,7 +125,7 @@ function Modal() {
     setShowModal(false)
   }
 
-  console.log(trailer)
+  console.log('trailer ', trailer)
 
   return (
     <MuiModal
@@ -217,3 +221,17 @@ function Modal() {
 }
 
 export default Modal
+
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   const [movie, setMovie] = useRecoilState(movieState)
+
+//   const data = await fetch(
+//     `https://api.themoviedb.org/3/${movie?.media_type === 'tv' ? 'tv' : 'movie'}/${movie?.id}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=id&append_to_response=videos`
+//   ).then((res) => res.json())
+
+//   return {
+//     props: {
+//       data,
+//     },
+//   }
+// }

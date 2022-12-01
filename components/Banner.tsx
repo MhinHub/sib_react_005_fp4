@@ -36,8 +36,9 @@ function Banner({ mouveeBanner }: Props) {
       <div className="absolute top-0 left-0 -z-10 h-[95vh] w-screen">
         <Image
           src={`${baseUrl}${movie?.backdrop_path || movie?.poster_path}`}
-          layout="fill"
-          objectFit="cover"
+          fill
+          style={{ objectFit: 'cover' }}
+          alt="Mouvee banner"
         />
       </div>
 

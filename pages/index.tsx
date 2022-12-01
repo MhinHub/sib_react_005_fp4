@@ -59,7 +59,7 @@ const Home = ({
     <div className={`relative h-screen bg-gradient-to-b lg:h-[140vh] ${showModal && '!h-screen overflow-hidden'}`}>
       <Head>
         <title>Home - Mouvee</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" crossOrigin="anonymous" />
       </Head>
 
       <Header />
