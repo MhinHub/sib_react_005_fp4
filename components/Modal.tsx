@@ -48,6 +48,8 @@ function Modal() {
   }
 
   useEffect(() => {
+    console.log("Data from modal movie", movie)
+
     if (!movie) return
 
     async function fetchMovie() {
@@ -62,8 +64,6 @@ function Modal() {
           (element: Element) => element.type === 'Trailer'
         )
         setTrailer(data.videos?.results[index]?.key)
-      } else {
-        setTrailer('video disabled')
       }
       if (data?.genres) {
         setGenres(data.genres)
@@ -148,7 +148,9 @@ function Modal() {
             width="100%"
             height="100%"
             style={{ position: 'absolute', top: '0', left: '0' }}
-            playing
+            controls
+            // playIcon={}
+            // playing
             muted={muted}
           />
           <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
@@ -184,7 +186,7 @@ function Modal() {
           <div className="space-y-6 text-lg">
             <div className="flex items-center space-x-2 text-sm">
               <p className="font-semibold text-green-400">
-                {movie!.vote_average * 10}% Match
+                {(movie!.vote_average * 10).toFixed()}% Match
               </p>
               <p className="font-light">
                 {movie?.release_date || movie?.first_air_date}
