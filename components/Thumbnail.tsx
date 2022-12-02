@@ -10,9 +10,11 @@ interface Props {
   // When using firebase
   // movie: Movie | DocumentData
   movie: Movie | DocumentData
+  children?: React.ReactNode
+  styleImg?: string
 }
 
-function Thumbnail({ movie }: Props) {
+function Thumbnail({ movie, children, styleImg }: Props) {
   // const [showModal, setShowModal] = useRecoilState(modalState)
   // const [currentMovie, setCurrentMovie] = useRecoilState(movieState)
 
@@ -35,10 +37,13 @@ function Thumbnail({ movie }: Props) {
       <Image
         src={`https://image.tmdb.org/t/p/w342${movie.backdrop_path || movie.poster_path
           }`}
-        className="rounded-sm object-cover md:rounded"
+        className={`${styleImg} rounded-sm object-cover`}
         fill
+        loading='lazy'
+        sizes='100%'
         alt="Mouvee thumbnail"
       />
+      {children}
     </div>
   )
 }

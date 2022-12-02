@@ -28,6 +28,8 @@ function RowFill({ title, movies }: Props) {
         }
     }
 
+    console.log('RowFill Mouvies', movies)
+
     return (
         <div className="h-40 space-y-0.5 md:space-y-2">
             <h2 className="w-56 cursor-pointer text-sm font-semibold text-[#e5e5e5] transition duration-200 hover:text-white md:text-2xl">
@@ -42,10 +44,14 @@ function RowFill({ title, movies }: Props) {
 
                 <div
                     ref={rowRef}
-                    className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2"
+                    className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-3 md:p-2"
                 >
                     {movies.map((movie) => (
-                        <Thumbnail key={movie.id} movie={movie} />
+                        <div key={movie.id} className="flex py-3 px-4 rounded-2xl bg-glass left-10 top-52 transition duration-200 ease-out hover:scale-105">
+                            <Thumbnail movie={movie} styleImg="rounded-t-xl">
+                                <p className='absolute font-medium pt-1 text-center bg-glass w-full bottom-0 rounded-b-md'>{movie.title}</p>
+                            </Thumbnail>
+                        </div>
                     ))}
                 </div>
 

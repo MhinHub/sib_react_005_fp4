@@ -41,6 +41,8 @@ function Banner({ mouveeBanner }: Props) {
         <Image
           src={`${baseUrl}${movie?.backdrop_path || movie?.poster_path}`}
           fill
+          sizes='100%'
+          priority
           style={{ objectFit: 'cover' }}
           alt="Mouvee banner"
         />

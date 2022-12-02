@@ -14,14 +14,14 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "paths": {
-      "@components/*": [
-        "./components/*"
-      ],
-      "@hooks/*": [
-        "./hooks/*"
-      ],
-    }
+    // "paths": {
+    //   "@components/*": [
+    //     "./components/*"
+    //   ],
+    //   "@hooks/*": [
+    //     "./hooks/*"
+    //   ],
+    // }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

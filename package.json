@@ -1,4 +1,5 @@
 {
+  "name": "mouvee-app",
   "private": true,
   "scripts": {
     "open": "sleep 10 && xdg-open http://localhost:3000",

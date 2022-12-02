@@ -25,7 +25,7 @@ function Header() {
   }, [])
 
   return (
-    <header className={`${isScrolled ? 'glass' : 'hidden transition'} transition`}>
+    <header className={`${isScrolled ? 'bg-glass h-[10vh] w-full rounded-md' : 'hidden transition'} transition`}>
       <div className="flex items-center space-x-2 md:space-x-10">
         <img
           src="https://rb.gy/ulxxee"

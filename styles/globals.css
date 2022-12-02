@@ -70,7 +70,7 @@
     @apply !block !w-72 !py-3.5 !text-center !text-sm !font-light !text-[#b3b3b3] !transition !duration-200 first:cursor-default first:!font-normal first:!text-white hover:!bg-[#11100F];
   }
 
-  .glass {
-    @apply h-[10vh] w-full bg-gray-500 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10;
+  .bg-glass {
+    @apply bg-gray-500 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10;
   }
 }
