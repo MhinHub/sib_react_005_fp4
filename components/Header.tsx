@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import useAuth from '../hooks/useAuth'
 import BasicMenu from './BasicMenu'
+import { memo } from 'react'
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -25,7 +26,7 @@ function Header() {
   }, [])
 
   return (
-    <header className={`${isScrolled ? 'bg-glass h-[10vh] w-full rounded-md' : 'hidden transition'} transition`}>
+    <header className={`${isScrolled ? 'bg-glass-gray h-[10vh] w-full rounded-md' : 'hidden transition'} transition`}>
       <div className="flex items-center space-x-2 md:space-x-10">
         <img
           src="https://rb.gy/ulxxee"
@@ -58,4 +59,4 @@ function Header() {
   )
 }
 
-export default Header
+export default memo(Header)

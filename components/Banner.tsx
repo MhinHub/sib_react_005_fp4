@@ -5,6 +5,7 @@ import { InformationCircleIcon } from '@heroicons/react/solid'
 // import { useRecoilState } from 'recoil'
 // import { modalState, movieState } from '../atoms/modalAtom'
 import useStore from '../core/store'
+import { memo } from 'react'
 
 interface Props {
   mouveeBanner: Movie[]
@@ -69,4 +70,4 @@ function Banner({ mouveeBanner }: Props) {
   )
 }
 
-export default Banner
+export default memo(Banner)

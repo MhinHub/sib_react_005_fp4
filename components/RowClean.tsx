@@ -3,6 +3,7 @@ import { useRef, useState } from 'react'
 import { Movie } from '../typings'
 import Thumbnail from './Thumbnail'
 import { DocumentData } from 'firebase/firestore'
+import { memo } from 'react'
 
 interface Props {
   movies: Movie[] | DocumentData[]
@@ -54,4 +55,4 @@ function RowClean({ movies }: Props) {
   )
 }
 
-export default RowClean
+export default memo(RowClean)

@@ -71,9 +71,9 @@ const Home = ({
         <section className="md:space-y-24">
           <RowClean movies={trendingNow} />
           <RowFill title="Top Rated" movies={topRated} />
-          {/* <RowFill title="Action Thrillers" movies={actionMovies} />
+          <RowFill title="Action Thrillers" movies={actionMovies} />
           {list.length > 0 && <RowFill title="My List" movies={list} />}
-          <RowFill title="Comedies" movies={comedyMovies} />
+          {/* <RowFill title="Comedies" movies={comedyMovies} />
           <RowFill title="Scary Movies" movies={horrorMovies} />
           <RowFill title="Romance Movies" movies={romanceMovies} />
           <RowFill title="Documentaries" movies={documentaries} /> */}

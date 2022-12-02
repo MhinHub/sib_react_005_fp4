@@ -1,3 +1,5 @@
+import { memo } from 'react'
+
 function Loader({ color }: { color: string }) {
     return (
         <svg
@@ -19,4 +21,4 @@ function Loader({ color }: { color: string }) {
     )
 }
 
-export default Loader
+export default memo(Loader)

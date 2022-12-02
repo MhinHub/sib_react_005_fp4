@@ -5,6 +5,8 @@ import useStore from '../core/store'
 import shallow from 'zustand/shallow'
 import { Movie } from '../typings'
 import { DocumentData } from 'firebase/firestore'
+import Link from 'next/link'
+import { memo } from 'react'
 
 interface Props {
   // When using firebase
@@ -28,24 +30,26 @@ function Thumbnail({ movie, children, styleImg }: Props) {
 
   return (
     <div
-      className="relative h-28 min-w-[180px] cursor-pointer transition duration-200 ease-out md:h-36 md:min-w-[260px] md:hover:scale-105"
+      className={`relative h-28 min-w-[280px] cursor-pointer transition duration-200 ease-out md:h-48 md:w-[370px] md:hover:scale-105`}
       onClick={() => {
         setCurrentMovie(movie)
         setShowModal(true)
       }}
     >
-      <Image
-        src={`https://image.tmdb.org/t/p/w342${movie.backdrop_path || movie.poster_path
-          }`}
-        className={`${styleImg} rounded-sm object-cover`}
-        fill
-        loading='lazy'
-        sizes='100%'
-        alt="Mouvee thumbnail"
-      />
+      <Link href={`/detail/${movie.id}`}>
+        <Image
+          src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path || movie.poster_path
+            }`}
+          className={`${styleImg} rounded-sm object-cover`}
+          fill
+          loading='lazy'
+          sizes='100%'
+          alt="Mouvee thumbnail"
+        />
+      </Link>
       {children}
     </div>
   )
 }
 
-export default Thumbnail
+export default memo(Thumbnail)

@@ -27,6 +27,7 @@ import { db } from '../firebase'
 import useAuth from '../hooks/useAuth'
 import { Element, Genre, Movie } from '../typings'
 import axios from 'axios'
+import { memo } from 'react'
 import { GetServerSideProps } from 'next'
 
 function Modal() {
@@ -237,7 +238,7 @@ function Modal() {
   )
 }
 
-export default Modal
+export default memo(Modal)
 
 // export const getServerSideProps: GetServerSideProps = async () => {
 //   const [movie, setMovie] = useRecoilState(movieState)

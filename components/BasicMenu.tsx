@@ -2,8 +2,9 @@ import Button from '@mui/material/Button'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import { useState } from 'react'
+import { memo } from 'react'
 
-export default function BasicMenu() {
+function BasicMenu() {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
     const open = Boolean(anchorEl)
 
@@ -46,3 +47,5 @@ export default function BasicMenu() {
         </div>
     )
 }
+
+export default memo(BasicMenu)
