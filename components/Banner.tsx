@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { Movie } from '../typings'
+import { Movie, Details } from '../typings'
 import { InformationCircleIcon } from '@heroicons/react/solid'
 // import { useRecoilState } from 'recoil'
 // import { modalState, movieState } from '../atoms/modalAtom'
@@ -57,7 +57,7 @@ function Banner({ mouveeBanner }: Props) {
       </p>
       <div className="flex space-x-3">
         <button
-          className="bannerButton bg-[gray]/70"
+          className="flex bg-glass-gray items-center rounded-full px-4 py-2 text-base font-bold text-white hover:bg-opacity-20"
           onClick={() => {
             setCurrentMovie(movie)
             setShowModal(true)

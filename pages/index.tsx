@@ -67,11 +67,8 @@ const Home = ({
           <RowClean movies={nowPlaying} />
           <RowFill title="Top Rated" movies={topRated} />
           <RowFill title="Popular" movies={popular} />
+          <RowFill title="Upcoming" movies={upcoming} />
           {list.length > 0 && <RowFill title="My List" movies={list} />}
-          {/* <RowFill title="Comedies" movies={comedyMovies} />
-          <RowFill title="Scary Movies" movies={horrorMovies} />
-          <RowFill title="Romance Movies" movies={romanceMovies} />
-          <RowFill title="Documentaries" movies={documentaries} /> */}
         </section>
       </main>
       {showModal && <Modal />}
