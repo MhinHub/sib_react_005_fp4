@@ -17,7 +17,7 @@ function Banner({ mouveeBanner }: Props) {
   const setShowModal = useStore((state: any) => state.setShowModal)
   const setCurrentMovie = useStore((state: any) => state.setCurrentMovie)
 
-  const [movie, setMovie] = useState<Movie | null>(null)
+  const [movie, setMovie] = useState<Movie | null>(mouveeBanner[0])
 
   const baseUrl = 'https://image.tmdb.org/t/p/original/'
 

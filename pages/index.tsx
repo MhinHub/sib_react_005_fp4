@@ -9,9 +9,7 @@ import RowClean from '../components/RowClean'
 import RowFill from '../components//RowFill'
 import useAuth from '../hooks/useAuth'
 import { Movie } from '../typings'
-import requests from '../utils/requests'
 import useList from '../hooks/useList'
-import axios from 'axios'
 import { GetServerSideProps } from 'next'
 import reqApi from '../utils/reqApi'
 
@@ -83,7 +81,7 @@ const Home = ({
 
 export default Home
 
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const [
     nowPlaying,
     popular,
