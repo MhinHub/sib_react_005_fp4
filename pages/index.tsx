@@ -11,27 +11,24 @@ import useAuth from '../hooks/useAuth'
 import { Movie } from '../typings'
 import requests from '../utils/requests'
 import useList from '../hooks/useList'
+import axios from 'axios'
+import { GetServerSideProps } from 'next'
+import reqApi from '../utils/reqApi'
 
 interface Props {
   mouveeBanner: Movie[]
-  trendingNow: Movie[]
+  nowPlaying: Movie[]
+  popular: Movie[]
   topRated: Movie[]
-  actionMovies: Movie[]
-  comedyMovies: Movie[]
-  horrorMovies: Movie[]
-  romanceMovies: Movie[]
-  documentaries: Movie[]
+  upcoming: Movie[]
 }
 
 const Home = ({
   mouveeBanner,
-  actionMovies,
-  comedyMovies,
-  documentaries,
-  horrorMovies,
-  romanceMovies,
+  nowPlaying,
+  popular,
   topRated,
-  trendingNow,
+  upcoming,
 }: Props) => {
   const { loading, user } = useAuth()
   // const showModal = useRecoilValue(modalState)
@@ -69,9 +66,9 @@ const Home = ({
       <main className="relative px-4 pb-24 lg:space-y-24 lg:px-16">
         <Banner mouveeBanner={mouveeBanner} />
         <section className="md:space-y-24">
-          <RowClean movies={trendingNow} />
+          <RowClean movies={nowPlaying} />
           <RowFill title="Top Rated" movies={topRated} />
-          <RowFill title="Action Thrillers" movies={actionMovies} />
+          <RowFill title="Popular" movies={popular} />
           {list.length > 0 && <RowFill title="My List" movies={list} />}
           {/* <RowFill title="Comedies" movies={comedyMovies} />
           <RowFill title="Scary Movies" movies={horrorMovies} />
@@ -88,35 +85,24 @@ export default Home
 
 export const getServerSideProps = async () => {
   const [
-    mouveeBanner,
-    trendingNow,
+    nowPlaying,
+    popular,
     topRated,
-    actionMovies,
-    comedyMovies,
-    horrorMovies,
-    romanceMovies,
-    documentaries,
+    upcoming,
   ] = await Promise.all([
-    fetch(requests.fetchMouveeBanner).then((res) => res.json()),
-    fetch(requests.fetchTrending).then((res) => res.json()),
-    fetch(requests.fetchTopRated).then((res) => res.json()),
-    fetch(requests.fetchActionMovies).then((res) => res.json()),
-    fetch(requests.fetchComedyMovies).then((res) => res.json()),
-    fetch(requests.fetchHorrorMovies).then((res) => res.json()),
-    fetch(requests.fetchRomanceMovies).then((res) => res.json()),
-    fetch(requests.fetchDocumentaries).then((res) => res.json()),
+    reqApi.getNowPlaying().then((res) => res.results),
+    reqApi.getPopular().then((res) => res.results),
+    reqApi.getTopRated().then((res) => res.results),
+    reqApi.getUpcoming().then((res) => res.results),
   ])
 
   return {
     props: {
-      mouveeBanner: mouveeBanner.results,
-      trendingNow: trendingNow.results,
-      topRated: topRated.results,
-      actionMovies: actionMovies.results,
-      comedyMovies: comedyMovies.results,
-      horrorMovies: horrorMovies.results,
-      romanceMovies: romanceMovies.results,
-      documentaries: documentaries.results,
+      mouveeBanner: nowPlaying || [],
+      nowPlaying: nowPlaying || [],
+      popular: popular || [],
+      topRated: topRated || [],
+      upcoming: upcoming || [],
     },
   }
 }
