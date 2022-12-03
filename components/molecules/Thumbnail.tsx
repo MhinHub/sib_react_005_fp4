@@ -1,9 +1,9 @@
 import Image from 'next/image'
 // import { useRecoilState } from 'recoil'
 // import { modalState, movieState } from '../atoms/modalAtom'
-import useStore from '../core/store'
+import useStore from '../../core/zustand/store'
 import shallow from 'zustand/shallow'
-import { Movie } from '../typings'
+import { Movie } from '../../typings'
 import { DocumentData } from 'firebase/firestore'
 import Link from 'next/link'
 import { memo } from 'react'
@@ -30,7 +30,7 @@ function Thumbnail({ movie, children, styleImg }: Props) {
 
   return (
     <div
-      className={`relative h-28 min-w-[280px] cursor-pointer transition duration-200 ease-out md:h-48 md:w-[370px] md:hover:scale-105`}
+      className={`relative h-28 min-w-[280px] cursor-pointer transition duration-200 ease-out md:h-48 md:w-full md:hover:scale-105`}
       onClick={() => {
         setCurrentMovie(movie)
         setShowModal(true)

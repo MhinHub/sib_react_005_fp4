@@ -1,7 +1,7 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline'
 import { useRef, useState } from 'react'
 import { Movie } from '../typings'
-import Thumbnail from './Thumbnail'
+import Thumbnail from './molecules/Thumbnail'
 import { DocumentData } from 'firebase/firestore'
 import { memo } from 'react'
 

@@ -4,7 +4,7 @@ import { Movie, Details } from '../typings'
 import { InformationCircleIcon } from '@heroicons/react/solid'
 // import { useRecoilState } from 'recoil'
 // import { modalState, movieState } from '../atoms/modalAtom'
-import useStore from '../core/store'
+import useStore from '../core/zustand/store'
 import { memo } from 'react'
 
 interface Props {

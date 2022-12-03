@@ -1,9 +1,8 @@
 import Head from 'next/head'
 // import { useRecoilValue } from 'recoil'
 // import { modalState, movieState } from '../atoms/modalAtom'
-import useStore from '../core/store'
+import useStore from '../core/zustand/store'
 import Banner from '../components/Banner'
-import Header from '../components/Header'
 import Modal from '../components/Modal'
 import RowClean from '../components/RowClean'
 import RowFill from '../components//RowFill'
@@ -59,8 +58,6 @@ const Home = ({
         <title>Home - Mouvee</title>
         <link rel="icon" href="/favicon.ico" crossOrigin="anonymous" />
       </Head>
-
-      <Header />
       <main className="relative px-4 pb-24 lg:space-y-24 lg:px-16">
         <Banner mouveeBanner={mouveeBanner} />
         <section className="md:space-y-24">

@@ -3,6 +3,11 @@ export interface Genre {
   name: string
 }
 
+export interface CategoryTypes {
+  id: number;
+  name: string;
+}
+
 export interface Movie {
   title: string
   backdrop_path: string

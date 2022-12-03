@@ -3,12 +3,12 @@ import { useRef, useState } from 'react'
 import { Movie } from '../typings'
 import { DocumentData } from 'firebase/firestore'
 import { memo } from 'react'
-import CardItem from './molecule/CardItem'
+import CardItem from './molecules/CardItem'
+import Link from 'next/link'
 
 interface Props {
     title: string
     movies: Movie[] | DocumentData[]
-    movie: Movie
 }
 
 function RowFill({ title, movies }: Props) {
@@ -30,13 +30,16 @@ function RowFill({ title, movies }: Props) {
         }
     }
 
-    console.log('RowFill Mouvies', movies)
+    // console.log('RowFill Mouvies', movies)
 
     return (
         <div className="h-80 space-y-0.5 md:space-y-2">
             <h2 className="w-56 cursor-pointer text-sm font-semibold text-[#e5e5e5] transition duration-200 hover:text-white md:text-2xl">
                 {title}
             </h2>
+            <Link href={`/movies/Action?idc=${28}&page=1`}>
+                View All
+            </Link>
             <div className="group relative md:-ml-2">
                 <ChevronLeftIcon
                     className={`absolute top-0 bottom-0 left-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100 ${!isMoved && 'hidden'
@@ -48,8 +51,8 @@ function RowFill({ title, movies }: Props) {
                     ref={rowRef}
                     className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-3 md:p-2"
                 >
-                    {movies.map((movie) => (
-                        <CardItem movie={movie} />
+                    {movies.map((movie, key) => (
+                        <CardItem movie={movie} id={key} />
                     ))}
                 </div>
 

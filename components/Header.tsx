@@ -1,9 +1,11 @@
 import { BellIcon, SearchIcon } from '@heroicons/react/solid'
+import { SearchNormal1 } from 'iconsax-react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import useAuth from '../hooks/useAuth'
-import BasicMenu from './BasicMenu'
+import BasicMenu from './molecules/BasicMenu'
 import { memo } from 'react'
+import { useRouter } from 'next/navigation'
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -25,6 +27,15 @@ function Header() {
     }
   }, [])
 
+  const router = useRouter()
+  const [keyword, setKeyword] = useState('')
+
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    router.push(`/search/${keyword}`)
+  }
+
+
   return (
     <header className={`${isScrolled ? 'bg-glass-gray h-[10vh] w-full rounded-md' : 'hidden transition'} transition`}>
       <div className="flex items-center space-x-2 md:space-x-10">
@@ -45,7 +56,16 @@ function Header() {
       </div>
 
       <div className="flex items-center space-x-4 text-sm font-light">
-        <SearchIcon className="hidden h-6 w-6 sm:inline" />
+        <form onSubmit={handleSearch} className="flex group items-center justify-end">
+          <input
+            type="text"
+            placeholder="Search movie..."
+            className="bg-glass-gray w-96 h-10 rounded-full px-5"
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
+          />
+          <SearchNormal1 className='text-gray-100 absolute mr-5 group-active:invisible' variant="TwoTone" />
+        </form>
         <p className="hidden lg:inline">Kids</p>
         <BellIcon className="h-6 w-6" />
         <img

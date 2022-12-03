@@ -1,6 +1,6 @@
 import React from 'react'
 import { Flag, Star1, Card } from 'iconsax-react'
-import Thumbnail from '../Thumbnail'
+import Thumbnail from './Thumbnail'
 import { memo } from 'react'
 
 const CardItem = ({ movie }: any) => {
@@ -12,8 +12,8 @@ const CardItem = ({ movie }: any) => {
         return str?.length > n ? str.substr(0, n - 1) + '...' : str
     }
     return (
-        <div key={movie.id} className="flex-col group pt-3 px-4 rounded-2xl bg-glass-gray left-10 top-52 transition duration-200 ease-out hover:scale-105">
-            <Thumbnail movie={movie} styleImg="rounded-t-xl" >
+        <div key={movie.id} className={`flex-col group pt-3 px-4 rounded-2xl bg-glass-gray left-10 top-52 transition duration-200 ease-out hover:scale-105`}>
+            <Thumbnail movie={movie} styleImg="rounded-t-xl w-full" >
                 <p className='absolute font-medium pt-1 text-center bg-glass w-full bottom-0 rounded-b-md'>{movie.title}</p>
             </Thumbnail>
             <p className='flex justify-around my-3'>
@@ -36,7 +36,7 @@ const CardItem = ({ movie }: any) => {
                     </span>
                 </div>
             </p>
-            <p className='text-sm transition hidden group-hover:block font-light pb-2 px-1'>{truncate(movie.overview)}</p>
+            <p className={`text-sm hidden group-hover:block font-light pb-2 px-1`}>{truncate(movie.overview)}</p>
         </div>
     )
 }

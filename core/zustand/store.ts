@@ -1,6 +1,6 @@
 import create from 'zustand'
 import { DocumentData } from 'firebase/firestore'
-import { Movie } from '../typings'
+import { Movie } from '../../typings'
 
 const useStore = create(set => ({
     modalState: false,
