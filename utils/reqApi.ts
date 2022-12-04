@@ -66,6 +66,11 @@ async function getCredits(idm: number) {
     return data
 }
 
+async function getReviews(idm: number) {
+    const data = await fetch(`${BASE_URL}/movie/${idm}/reviews?api_key=${API_KEY}`).then(res => res.json())
+    return data
+}
+
 export default {
     getCategories,
     getNowPlaying,
@@ -79,5 +84,6 @@ export default {
     getTrendingMovies,
     getMovies,
     getResultMovies,
-    getCredits
+    getCredits,
+    getReviews
 }

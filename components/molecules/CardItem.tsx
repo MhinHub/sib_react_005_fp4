@@ -9,7 +9,7 @@ const CardItem = ({ movie }: any) => {
     const year = new Date(movie.release_date).getFullYear()
 
     const truncate = (str: string, n: number = 150) => {
-        return str?.length > n ? str.substr(0, n - 1) + '...' : str
+        return str?.length > n ? str.substring(0, n - 1) + '...' : str
     }
     return (
         <div key={movie.id} className={`flex-col group pt-3 px-4 rounded-2xl bg-glass-gray left-10 top-52 transition duration-200 ease-out hover:scale-105`}>

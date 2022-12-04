@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <AuthProvider>
       <Header />
       <Component {...pageProps} />
-      <Footer />
+      {/* <Footer /> */}
     </AuthProvider>
   )
 }
