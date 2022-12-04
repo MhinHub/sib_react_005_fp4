@@ -7,10 +7,11 @@ import Modal from '../components/Modal'
 import RowClean from '../components/RowClean'
 import RowFill from '../components//RowFill'
 import useAuth from '../hooks/useAuth'
-import { Movie } from '../typings'
+import { Movie, CategoryTypes } from '../typings'
 import useList from '../hooks/useList'
 import { GetServerSideProps } from 'next'
 import reqApi from '../utils/reqApi'
+import RowCategory from '../components/organisms/RowCategory'
 
 interface Props {
   mouveeBanner: Movie[]
@@ -18,6 +19,9 @@ interface Props {
   popular: Movie[]
   topRated: Movie[]
   upcoming: Movie[]
+  categories: CategoryTypes[]
+  categoryMovies: any
+  name: string
 }
 
 const Home = ({
@@ -26,6 +30,9 @@ const Home = ({
   popular,
   topRated,
   upcoming,
+  categories,
+  categoryMovies,
+  name
 }: Props) => {
   const { loading, user } = useAuth()
   // const showModal = useRecoilValue(modalState)
@@ -62,6 +69,7 @@ const Home = ({
         <Banner mouveeBanner={mouveeBanner} />
         <section className="md:space-y-24">
           <RowClean movies={nowPlaying} />
+          <RowCategory categories={categories} categoryMovies={categoryMovies} name={name} />
           <RowFill title="Top Rated" movies={topRated} />
           <RowFill title="Popular" movies={popular} />
           <RowFill title="Upcoming" movies={upcoming} />
@@ -75,26 +83,38 @@ const Home = ({
 
 export default Home
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const { idc, categories: name }: any = query
+
   const [
     nowPlaying,
+    categories,
     popular,
     topRated,
     upcoming,
+    categoryMovies
   ] = await Promise.all([
-    reqApi.getNowPlaying().then((res) => res.results),
-    reqApi.getPopular().then((res) => res.results),
-    reqApi.getTopRated().then((res) => res.results),
-    reqApi.getUpcoming().then((res) => res.results),
+    reqApi.getNowPlaying(),
+    reqApi.getCategories().then((res) => res.genres.filter(
+      (genre: CategoryTypes) =>
+        genre.name !== 'Romance'
+    )),
+    reqApi.getPopular(),
+    reqApi.getTopRated(),
+    reqApi.getUpcoming(),
+    reqApi.getCategoryMovies(idc),
   ])
 
   return {
     props: {
-      mouveeBanner: nowPlaying || [],
-      nowPlaying: nowPlaying || [],
-      popular: popular || [],
-      topRated: topRated || [],
-      upcoming: upcoming || [],
+      mouveeBanner: nowPlaying.results || [],
+      nowPlaying: nowPlaying.results || [],
+      categories: categories || [],
+      popular: popular.results || [],
+      topRated: topRated.results || [],
+      upcoming: upcoming.results || [],
+      categoryMovies: categoryMovies.results || [],
+      name: name || 'Action',
     },
   }
 }

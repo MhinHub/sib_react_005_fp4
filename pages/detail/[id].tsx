@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
-import { Details, Genre } from '../../typings'
+import { Details, Genre } from '@typings'
 import { DocumentData } from 'firebase/firestore'
 import { GetServerSideProps } from 'next'
 import Image from 'next/image'
-import reqApi from '../../utils/reqApi'
+import reqApi from '@utils/reqApi'
 import { Tabs } from 'flowbite-react'
+import RowFill from '@components/RowFill'
 
 interface Props {
     movie: Details | DocumentData
@@ -158,6 +159,9 @@ const Detail = ({ movie, credits, similarMovies, reviews }: Props) => {
                         </div>
                     </div>
                 </div>
+            </section>
+            <section className='relative mt-40 px-4 pb-24 lg:space-y-24 lg:px-16'>
+                <RowFill key={movie.id} title="Similar Movies" movies={similarMovies} />
             </section>
         </main>
     )

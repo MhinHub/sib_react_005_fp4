@@ -9,9 +9,10 @@ import Link from 'next/link'
 interface Props {
     title: string
     movies: Movie[] | DocumentData[]
+    tabs?: any
 }
 
-function RowFill({ title, movies }: Props) {
+function RowFill({ title, movies, tabs }: Props) {
     const rowRef = useRef<HTMLDivElement>(null)
     const [isMoved, setIsMoved] = useState(false)
 

@@ -1,8 +1,8 @@
 import React from 'react'
-import CardItem from '../../components/molecules/CardItem'
-import reqApi from '../../utils/reqApi'
+import CardItem from '@components/molecules/CardItem'
+import reqApi from '@utils/reqApi'
 import { GetServerSideProps } from 'next'
-import { Details } from '../../typings'
+import { Details } from '@typings'
 
 interface SearchProps {
     movie: Details[]

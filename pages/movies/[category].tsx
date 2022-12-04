@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import ReactPaginate from 'react-paginate';
-import { Details, CategoryTypes } from '../../typings';
-import reqApi from '../../utils/reqApi';
+import { Details, CategoryTypes } from '@typings';
+import reqApi from '@utils/reqApi';
 import { GetServerSideProps } from 'next';
-import ButtonTab from '../../components/atoms/ButtonTab';
-import CardItem from '../../components/molecules/CardItem';
+import ButtonTab from '@components/atoms/ButtonTab';
+import CardItem from '@components/molecules/CardItem';
 
 interface CategoryProps {
     movies: Details[];
@@ -92,7 +92,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
             totalPages: totalPages || 1,
             id: id || 0,
             p: p || 0,
-            name: name || 'test'
+            name: name || ''
         }
     };
 }

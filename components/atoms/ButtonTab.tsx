@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { CategoryTypes } from '../../typings';
+import { CategoryTypes } from '@typings';
 
 interface ButtonTabProps {
     category: CategoryTypes;
