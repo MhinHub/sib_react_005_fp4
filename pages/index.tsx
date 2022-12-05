@@ -36,7 +36,7 @@ const Home = ({
 }: Props) => {
   const { loading, user } = useAuth()
   // const showModal = useRecoilValue(modalState)
-  const showModal = useStore((state: any) => state.modalState)
+  const showModal = useStore((state: any) => state.isModalState)
 
   const list = useList(user?.uid)
 

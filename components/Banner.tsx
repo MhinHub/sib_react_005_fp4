@@ -14,8 +14,8 @@ interface Props {
 function Banner({ mouveeBanner }: Props) {
   // const [showModal, setShowModal] = useRecoilState(modalState)
   // const [currentMovie, setCurrentMovie] = useRecoilState(movieState)
-  const setShowModal = useStore((state: any) => state.setShowModal)
-  const setCurrentMovie = useStore((state: any) => state.setCurrentMovie)
+  const setShowModal = useStore((state: any) => state.setIsModalState)
+  const setCurrentMovie = useStore((state: any) => state.setMovieState)
 
   const [movie, setMovie] = useState<Movie | null>(mouveeBanner[0])
 

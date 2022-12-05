@@ -34,10 +34,10 @@ function Modal() {
   // const [showModal, setShowModal] = useRecoilState(modalState)
   // const [movie, setMovie] = useRecoilState(movieState)
 
-  const { modalState: showModal, setModalState: setShowModal } = useStore(
+  const { isModalState: showModal, setIsModalState: setShowModal } = useStore(
     (state: any) => ({
-      modalState: state.modalState,
-      setModalState: state.setModalState
+      isModalState: state.isModalState,
+      setIsModalState: state.setIsModalState
     }),
     shallow
   )
