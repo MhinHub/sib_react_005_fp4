@@ -20,9 +20,9 @@ function Thumbnail({ movie, children, styleImg }: Props) {
   // const [showModal, setShowModal] = useRecoilState(modalState)
   // const [currentMovie, setCurrentMovie] = useRecoilState(movieState)
 
-  const { setModalState: setShowModal, setMovieState: setCurrentMovie } = useStore(
+  const { setIsModalState: setShowModal, setMovieState: setCurrentMovie } = useStore(
     (state: any) => ({
-      setModalState: state.setModalState,
+      setIsModalState: state.setIsModalState,
       setMovieState: state.setMovieState
     }),
     shallow

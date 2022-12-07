@@ -42,23 +42,6 @@ const Home = ({
 
   if (loading) return null
 
-  // const getDeviceType = () => {
-  //   const ua = navigator.userAgent;
-  //   if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
-  //     return "tablet";
-  //   }
-  //   if (
-  //     /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
-  //       ua
-  //     )
-  //   ) {
-  //     return "mobile";
-  //   }
-  //   return "desktop";
-  // };
-
-  // console.log('device type', getDeviceType())
-
   return (
     <div className={`relative h-screen bg-gradient-to-b lg:h-[140vh] ${showModal && '!h-screen overflow-hidden'}`}>
       <Head>
@@ -75,8 +58,8 @@ const Home = ({
           <RowFill title="Upcoming" movies={upcoming} />
           {list.length > 0 && <RowFill title="My List" movies={list} />}
         </section>
+        {showModal && <Modal />}
       </main>
-      {showModal && <Modal />}
     </div>
   )
 }
@@ -84,7 +67,7 @@ const Home = ({
 export default Home
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const { idc, categories: name }: any = query
+  const { idc, category: name }: any = query
 
   const [
     nowPlaying,

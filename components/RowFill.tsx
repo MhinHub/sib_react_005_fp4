@@ -35,12 +35,24 @@ function RowFill({ title, movies, tabs }: Props) {
 
     return (
         <div className="h-80 space-y-0.5 md:space-y-2">
-            <h2 className="w-56 cursor-pointer text-sm font-semibold text-[#e5e5e5] transition duration-200 hover:text-white md:text-2xl">
-                {title}
-            </h2>
-            <Link href={`/movies/Action?idc=${28}&page=1`}>
-                View All
-            </Link>
+            <div className="flex items-center justify-between my-4 px-4">
+                <h2 className="w-fit cursor-pointer text-sm font-semibold text-[#e5e5e5] transition duration-200 hover:text-white md:text-2xl">
+                    {title}
+                </h2>
+                <Link href={`/movies/Action?idc=${28}&page=1`}>
+                    View All
+                </Link>
+            </div>
+
+            {tabs && (
+                <div className="flex space-x-2 overflow-x-scroll scrollbar-hide md:space-x-3 md:p-2">
+                    {tabs.map((tab: any) => (
+                        <Link className="flex items-center text-center justify-center w-max h-8 px-3 text-sm font-semibold text-white transition duration-200 bg-[#1f1f1f] rounded-full hover:bg-[#2f2f2f]" href={`?categories=${tab.name}&idc=${tab.id}&page=1`}>
+                            <span>{tab.name}</span>
+                        </Link>
+                    ))}
+                </div>
+            )}
             <div className="group relative md:-ml-2">
                 <ChevronLeftIcon
                     className={`absolute top-0 bottom-0 left-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100 ${!isMoved && 'hidden'

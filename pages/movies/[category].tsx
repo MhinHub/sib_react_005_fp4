@@ -28,8 +28,7 @@ export default function Category({ movies, categories, totalPages, id, p, name }
         if (pageActive > totalPages) {
             setPageActive(totalPages);
         }
-        router.push(`/movies/${name}?idc=${idc}&page=${pageActive}`);
-    }, [idc, pageActive, totalPages]);
+    }, [pageActive])
 
 
     return (
@@ -89,9 +88,9 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         props: {
             movies: movies || [],
             categories: categories || [],
-            totalPages: totalPages || 1,
-            id: id || 0,
-            p: p || 0,
+            totalPages: totalPages || null,
+            id: id || null,
+            p: p || null,
             name: name || ''
         }
     };
