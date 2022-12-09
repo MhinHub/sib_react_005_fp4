@@ -33,6 +33,7 @@ function Header() {
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     router.push(`/search/${keyword}`)
+    setKeyword('')
   }
 
 

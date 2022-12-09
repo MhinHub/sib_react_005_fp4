@@ -4,8 +4,9 @@ import { DocumentData } from 'firebase/firestore'
 import { GetServerSideProps } from 'next'
 import Image from 'next/image'
 import reqApi from '@utils/reqApi'
-import { Tabs } from 'flowbite-react'
+import { Tabs, Badge } from 'flowbite-react'
 import RowFill from '@components/RowFill'
+import { MessageText1, Personalcard, People } from 'iconsax-react'
 
 interface Props {
     movie: Details | DocumentData
@@ -52,25 +53,35 @@ const Detail = ({ movie, credits, similarMovies, reviews }: Props) => {
                         />
                         <div className='flex-col col-start-2 col-span-2' >
                             <h1 className='text-6xl font-bold'>{movie?.original_title}</h1>
-                            {movie?.genres.map((genre: Genre) => (
-                                <div key={genre.id} className='flex-row'>
-                                    <p>{genre.name}</p>
-                                </div>
-                            ))}
-                            <span>{movie.release_date}</span>
-                            <span>{` | ${(movie.vote_average).toFixed(1)} (${movie.vote_count})`}</span>
-                            <p>{movie?.overview}</p>
+                            <div className='flex flex-row py-1 gap-x-1 text-sm pl-2'>
+                                <span>{movie.release_date}</span>
+                                <span>|</span>
+                                <span>{`${(movie.vote_average).toFixed(1)} (${movie.vote_count})`}</span>
+                            </div>
 
+                            <div className='flex flex-row w-full'>
+                                {movie?.genres.map((genre: Genre) => (
+                                    <Badge
+                                        key={genre.id}
+                                        className="mr-2 rounded-full bg-purple-900 text-indigo-400 badge-glass-text"
+                                        color="purple"
+                                        size="sm"
+                                    >
+                                        {genre.name}
+                                    </Badge>
+                                ))}
+                            </div>
+                            <p className='py-4 font-medium'>{movie?.overview}</p>
 
                             <Tabs.Group
                                 aria-label="Tabs with icons"
                                 style="underline"
-                                className="mt-4 justify-around"
+                                className="justify-around"
                             >
                                 <Tabs.Item
                                     active
-                                    title="Reviews"
-                                // icon={HiUserCircle}
+                                    title="Comment"
+                                    icon={() => <MessageText1 variant='Bold' className='text-purple-700 bg-glass mr-1' />}
                                 >
                                     <div className="flex-1 flex-col h-44 overflow-y-scroll">
                                         {reviews.results.map((review: any) => {
@@ -109,7 +120,7 @@ const Detail = ({ movie, credits, similarMovies, reviews }: Props) => {
                                 </Tabs.Item>
                                 <Tabs.Item
                                     title="Cast"
-                                // icon={MdDashboard}
+                                    icon={() => <Personalcard variant="Bold" className='text-purple-700 mr-1' />}
                                 >
                                     <div className="flex flex-row overflow-x-scroll gap-x-32">
                                         {credits.cast.map((cast: any) => (
@@ -131,7 +142,7 @@ const Detail = ({ movie, credits, similarMovies, reviews }: Props) => {
                                 </Tabs.Item>
                                 <Tabs.Item
                                     title="Crew"
-                                // icon={HiAdjustments}
+                                    icon={() => <People variant='Bold' className='text-purple-700 mr-1' />}
                                 >
                                     {/* with column scroll */}
                                     <div className="grid grid-cols-3 gap-3 h-40 overflow-y-scroll ">
