@@ -19,6 +19,7 @@
     "flowbite": "^1.5.4",
     "flowbite-react": "^0.3.6",
     "iconsax-react": "^0.0.8",
+    "moment": "^2.29.4",
     "next": "^13.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -38,7 +39,7 @@
     "postcss": "^8.4.19",
     "prettier": "^2.5.1",
     "prettier-plugin-tailwindcss": "^0.1.1",
-    "tailwind-scrollbar": "^1.3.1",
+    "tailwind-scrollbar": "^2.0.1",
     "tailwindcss": "^3.2.4",
     "tailwindcss-textshadow": "^2.1.3",
     "typescript": "^4.9.3"

@@ -3,10 +3,11 @@ import { Details, Genre } from '@typings'
 import { DocumentData } from 'firebase/firestore'
 import { GetServerSideProps } from 'next'
 import Image from 'next/image'
+import moment from 'moment'
 import reqApi from '@utils/reqApi'
 import { Tabs, Badge } from 'flowbite-react'
 import RowFill from '@components/RowFill'
-import { MessageText1, Personalcard, People } from 'iconsax-react'
+import { MessageText1, Personalcard, People, Clock, Star } from 'iconsax-react'
 
 interface Props {
     movie: Details | DocumentData
@@ -53,18 +54,24 @@ const Detail = ({ movie, credits, similarMovies, reviews }: Props) => {
                         />
                         <div className='flex-col col-start-2 col-span-2' >
                             <h1 className='text-6xl font-bold'>{movie?.original_title}</h1>
-                            <div className='flex flex-row py-1 gap-x-1 text-sm pl-2'>
-                                <span>{movie.release_date}</span>
+                            <div className='flex flex-row pb-4 gap-x-4 items-center text-sm pl-2'>
+                                <span className='flex items-center gap-x-1'>
+                                    <Clock className='text-gray-200' variant='Bulk' />
+                                    {new Date(movie.release_date).toLocaleDateString('en', { day: 'numeric', month: 'long', year: 'numeric' })}
+                                </span>
                                 <span>|</span>
-                                <span>{`${(movie.vote_average).toFixed(1)} (${movie.vote_count})`}</span>
+                                <span className='flex items-center gap-x-1'>
+                                    <Star className='text-gray-200' variant='Bulk' />
+                                    {`${(movie.vote_average).toFixed(1)} (${movie.vote_count})`}
+                                </span>
                             </div>
 
                             <div className='flex flex-row w-full'>
                                 {movie?.genres.map((genre: Genre) => (
                                     <Badge
                                         key={genre.id}
-                                        className="mr-2 rounded-full bg-purple-900 text-indigo-400 badge-glass-text"
-                                        color="purple"
+                                        className="mr-2 rounded-full bg-gray-700 text-gray-200 badge-glass-text"
+                                        color="default"
                                         size="sm"
                                     >
                                         {genre.name}
@@ -83,7 +90,7 @@ const Detail = ({ movie, credits, similarMovies, reviews }: Props) => {
                                     title="Comment"
                                     icon={() => <MessageText1 variant='Bold' className='text-purple-700 bg-glass mr-1' />}
                                 >
-                                    <div className="flex-1 flex-col h-44 overflow-y-scroll">
+                                    <div className="flex-1 flex-col h-52 overflow-y-scroll scrollbar-all">
                                         {reviews.results.map((review: any) => {
                                             const oriUrlAvatar: string = review.author_details.avatar_path
                                             console.log('Wrong Url Avatar', oriUrlAvatar)
@@ -98,7 +105,7 @@ const Detail = ({ movie, credits, similarMovies, reviews }: Props) => {
                                             console.log('urlAvatar', urlAvatar)
 
                                             return (
-                                                <div key={review.id} className="flex flex-col">
+                                                <div key={review.id} className="flex flex-col bg-glass px-4 py-3 mb-6">
                                                     <div className="flex flex-row">
                                                         <Image
                                                             src={urlAvatar}
@@ -108,11 +115,11 @@ const Detail = ({ movie, credits, similarMovies, reviews }: Props) => {
                                                             alt="Avatar reviewer"
                                                         />
                                                         <div className="flex flex-col ml-4">
-                                                            <span>{review.author}</span>
-                                                            <span>{review.created_at}</span>
+                                                            <span className='font-bold'>{review.author}</span>
+                                                            <span className='text-sm'>{moment(review.created_at).fromNow()}</span>
                                                         </div>
                                                     </div>
-                                                    <p>{review.content}</p>
+                                                    <p className='ml-16 mr-2 w-fit bg-glass-gray p-4 rounded-2xl'>{review.content}</p>
                                                 </div>
                                             )
                                         })}
@@ -122,9 +129,9 @@ const Detail = ({ movie, credits, similarMovies, reviews }: Props) => {
                                     title="Cast"
                                     icon={() => <Personalcard variant="Bold" className='text-purple-700 mr-1' />}
                                 >
-                                    <div className="grid grid-flow-col overflow-x-scroll gap-x-6">
+                                    <div className="grid grid-flow-col overflow-x-scroll gap-x-6 scrollbar-all">
                                         {credits.cast.map((cast: any) => (
-                                            <div key={cast.id} className="flex flex-row w-max bg-glass-gray px-2 py-4">
+                                            <div key={cast.id} className="flex flex-row w-max bg-glass-gray px-4 py-3">
                                                 <Image
                                                     src={`${baseUrl}/w185/${cast.profile_path}`}
                                                     className="object-cover rounded"
@@ -145,21 +152,12 @@ const Detail = ({ movie, credits, similarMovies, reviews }: Props) => {
                                     title="Crew"
                                     icon={() => <People variant='Bold' className='text-purple-700 mr-1' />}
                                 >
-                                    {/* with column scroll */}
-                                    <div className="grid grid-cols-3 gap-3 h-40 overflow-y-scroll ">
+                                    <div className="grid grid-cols-3 gap-3 h-40 overflow-y-scroll scrollbar-all">
                                         {credits.crew.map((crew: any) => (
                                             <div key={crew.id} className="flex w-full">
-                                                <Image
-                                                    src={`${baseUrl}/w185/${crew.profile_path}`}
-                                                    className="rounded-full h-12"
-                                                    width={48}
-                                                    height={0}
-                                                    alt="Crew avatar"
-                                                />
-                                                <p>
-                                                    <span className='flex'>{crew.name}</span>
-                                                    <span className='flex'>{crew.department}</span>
-                                                    <span className='flex'>{crew.job}</span>
+                                                <p className='flex flex-col'>
+                                                    <span className='font-bold'>{crew.name}</span>
+                                                    <span className='text-sm'>{crew.job}</span>
                                                 </p>
                                             </div>
                                         ))}
