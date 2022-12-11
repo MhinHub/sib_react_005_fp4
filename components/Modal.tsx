@@ -1,11 +1,4 @@
-import {
-  CheckIcon,
-  PlusIcon,
-  ThumbUpIcon,
-  VolumeOffIcon,
-  XIcon,
-} from '@heroicons/react/outline'
-import { VolumeUpIcon } from '@heroicons/react/solid'
+import { CloseCircle, VolumeSlash, VolumeHigh, ArchiveAdd, ArchiveTick, Like1, Play } from 'iconsax-react'
 import MuiModal from '@mui/material/Modal'
 import {
   collection,
@@ -17,7 +10,6 @@ import {
 } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
-import { FaPlay } from 'react-icons/fa'
 import ReactPlayer from 'react-player/lazy'
 // import { useRecoilState } from 'recoil'
 // import { modalState, movieState } from '../atoms/modalAtom'
@@ -147,15 +139,15 @@ function Modal() {
     <MuiModal
       open={showModal}
       onClose={handleClose}
-      className="fixex !top-7 left-0 right-0 z-50 mx-auto w-full max-w-5xl overflow-hidden overflow-y-scroll rounded-md scrollbar-hide"
+      className="absolute z-40  mx-auto w-full max-w-5xl overflow-hidden overflow-y-scroll rounded-md scrollbar-hide"
     >
       <>
         <Toaster position="bottom-center" />
         <button
           onClick={handleClose}
-          className="modalButton absolute right-5 top-5 !z-40 h-9 w-9 border-none bg-[#181818] hover:bg-[#181818]"
+          className="absolute right-1 top-1 z-50"
         >
-          <XIcon className="h-6 w-6" />
+          <CloseCircle size={40} variant='Bulk' />
         </button>
 
         <div className="relative pt-[56.25%]">
@@ -172,27 +164,27 @@ function Modal() {
           <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
             <div className="flex space-x-2">
               <button className="flex items-center gap-x-2 rounded bg-white px-8 text-xl font-bold text-black transition hover:bg-[#e6e6e6]">
-                <FaPlay className="h-7 w-7 text-black" />
+                <Play className="h-7 w-7 text-black" variant='Bold' />
                 Play
               </button>
 
               <button className="modalButton" onClick={handleList}>
                 {addedToList ? (
-                  <CheckIcon className="h-7 w-7" />
+                  <ArchiveTick className="h-7 w-7" variant='Bulk' />
                 ) : (
-                  <PlusIcon className="h-7 w-7" />
+                    <ArchiveAdd className="h-7 w-7" variant='Bulk' />
                 )}
               </button>
 
               <button className="modalButton">
-                <ThumbUpIcon className="h-7 w-7" />
+                <Like1 className="h-7 w-7" variant='Bulk' />
               </button>
             </div>
             <button className="modalButton" onClick={() => setMuted(!muted)}>
               {muted ? (
-                <VolumeOffIcon className="h-6 w-6" />
+                <VolumeSlash className="h-6 w-6" variant='Bulk' />
               ) : (
-                <VolumeUpIcon className="h-6 w-6" />
+                  <VolumeHigh className="h-6 w-6" variant='Bulk' />
               )}
             </button>
           </div>
@@ -202,7 +194,7 @@ function Modal() {
           <div className="space-y-6 text-lg">
             <div className="flex items-center space-x-2 text-sm">
               <p className="font-semibold text-green-400">
-                {(movie!.vote_average * 10).toFixed()}% Match
+                {(movie?.vote_average * 10).toFixed()}% Match
               </p>
               <p className="font-light">
                 {movie?.release_date || movie?.first_air_date}
@@ -239,17 +231,3 @@ function Modal() {
 }
 
 export default memo(Modal)
-
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   const [movie, setMovie] = useRecoilState(movieState)
-
-//   const data = await fetch(
-//     `https://api.themoviedb.org/3/${movie?.media_type === 'tv' ? 'tv' : 'movie'}/${movie?.id}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=id&append_to_response=videos`
-//   ).then((res) => res.json())
-
-//   return {
-//     props: {
-//       data,
-//     },
-//   }
-// }
