@@ -5,9 +5,10 @@ import { GetServerSideProps } from 'next'
 import Image from 'next/image'
 import moment from 'moment'
 import reqApi from '@utils/reqApi'
-import { Tabs, Badge } from 'flowbite-react'
+import { Tabs, Badge, Breadcrumb } from 'flowbite-react'
 import RowFill from '@components/RowFill'
-import { MessageText1, Personalcard, People, Clock, Star } from 'iconsax-react'
+import { MessageText1, Personalcard, People, Clock, Star, Home } from 'iconsax-react'
+import Link from 'next/link'
 
 interface Props {
     movie: Details | DocumentData
@@ -30,6 +31,21 @@ const Detail = ({ movie, credits, similarMovies, reviews }: Props) => {
     return (
         <main>
             <section className="relative h-screen w-screen bg-gradient-to-t from-black to-transparent">
+                <Breadcrumb className='absolute ml-5 mt-4 px-5 py-2 rounded-full bg-glass-gray w-fit'>
+                    <Breadcrumb.Item
+                        icon={() => <Home className="text-gray-200" variant="Bulk" />}
+                    >
+                        <Link href="/" className='text-white underline underline-offset-4'>
+                            Home
+                        </Link>
+                    </Breadcrumb.Item>
+                    <Breadcrumb.Item>
+                        <p className='text-white'>Detail</p>
+                    </Breadcrumb.Item>
+                    <Breadcrumb.Item>
+                        <p className='text-white'>{movie?.title}</p>
+                    </Breadcrumb.Item>
+                </Breadcrumb>
                 <div className="absolute top-0 left-0 -z-10 h-screen w-screen">
                     <Image
                         src={`${baseUrl}/w1280/${movie?.belongs_to_collection !== null
