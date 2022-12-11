@@ -48,7 +48,7 @@ function Thumbnail({ movie, children, styleImg }: Props) {
           content="Play Trailer"
           style="dark"
           placement="top"
-          className='w-fit text-center text-sm'
+          className='w-fit z-50 text-center text-sm'
         >
           <PlayCircle
             className='text-white cursor-pointer'
@@ -70,7 +70,7 @@ function Thumbnail({ movie, children, styleImg }: Props) {
           content="Detail Movie"
           style="dark"
           placement="top"
-          className='w-fit text-center text-sm'
+          className='w-fit z-50 text-center text-sm'
         >
           <ExportSquare
             className='text-white cursor-pointer'

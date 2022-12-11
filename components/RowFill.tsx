@@ -62,7 +62,7 @@ function RowFill({ title, movies, tabs }: Props) {
 
                 <div
                     ref={rowRef}
-                    className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-3 md:p-2"
+                    className="flex items-start space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-3 md:p-2"
                 >
                     {movies.map((movie, key) => (
                         <CardItem movie={movie} id={key} />

@@ -42,6 +42,8 @@ const Home = ({
 
   if (loading) return null
 
+  console.log('Top Rated: ', topRated)
+
   return (
     <div className={`relative h-screen bg-gradient-to-b lg:h-[140vh] ${showModal && '!h-screen overflow-hidden'}`}>
       <Head>
