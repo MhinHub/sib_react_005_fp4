@@ -122,19 +122,20 @@ const Detail = ({ movie, credits, similarMovies, reviews }: Props) => {
                                     title="Cast"
                                     icon={() => <Personalcard variant="Bold" className='text-purple-700 mr-1' />}
                                 >
-                                    <div className="flex flex-row overflow-x-scroll gap-x-32">
+                                    <div className="grid grid-flow-col overflow-x-scroll gap-x-6">
                                         {credits.cast.map((cast: any) => (
-                                            <div key={cast.id} className="flex w-full">
+                                            <div key={cast.id} className="flex flex-row w-max bg-glass-gray px-2 py-4">
                                                 <Image
                                                     src={`${baseUrl}/w185/${cast.profile_path}`}
-                                                    className="h-32 rounded"
-                                                    width={120}
-                                                    height={0}
+                                                    className="object-cover rounded"
+                                                    width={80}
+                                                    height={80}
                                                     alt="Avatar actor"
                                                 />
-                                                <p>
-                                                    <span className='flex'>{cast.name}</span>
-                                                    <span className='flex'>{cast.character}</span>
+                                                <p className='flex flex-col pl-2 justify-center items-center'>
+                                                    <span>{cast.name}</span>
+                                                    <span>as</span>
+                                                    <span>{cast.character}</span>
                                                 </p>
                                             </div>
                                         ))}
