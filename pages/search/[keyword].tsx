@@ -3,6 +3,7 @@ import CardItem from '@components/molecules/CardItem'
 import reqApi from '@utils/reqApi'
 import { GetServerSideProps } from 'next'
 import { Details } from '@typings'
+import Layout from '@components/Layout'
 
 interface SearchProps {
     movie: Details[]
@@ -12,14 +13,16 @@ interface SearchProps {
 
 const Search = ({ movie, keyword, totalResults }: SearchProps) => {
     return (
-        <main>
-            <h1>{totalResults} total Result for "{keyword}"</h1>
-            <section className="mx-20 grid grid-cols-3 gap-10">
-                {movie.map((movie: any) => (
-                    <CardItem key={movie.id} movie={movie} />
-                ))}
-            </section>
-        </main>
+        <Layout title="Search">
+            <main>
+                <h1>{totalResults} total Result for "{keyword}"</h1>
+                <section className="mx-20 grid grid-cols-3 gap-10">
+                    {movie.map((movie: any) => (
+                        <CardItem key={movie.id} movie={movie} />
+                    ))}
+                </section>
+            </main>
+        </Layout>
     )
 }
 

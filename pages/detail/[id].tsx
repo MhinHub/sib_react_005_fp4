@@ -9,6 +9,7 @@ import { Tabs, Badge, Breadcrumb } from 'flowbite-react'
 import RowFill from '@components/RowFill'
 import { MessageText1, Personalcard, People, Clock, Star, Home } from 'iconsax-react'
 import Link from 'next/link'
+import Layout from '@components/Layout'
 
 interface Props {
     movie: Details | DocumentData
@@ -29,167 +30,169 @@ const Detail = ({ movie, credits, similarMovies, reviews }: Props) => {
     console.log('Reviews', reviews)
 
     return (
-        <main>
-            <section className="relative h-screen w-screen bg-gradient-to-t from-black to-transparent">
-                <Breadcrumb className='absolute ml-5 mt-4 px-5 py-2 rounded-full bg-glass-gray w-fit'>
-                    <Breadcrumb.Item
-                        icon={() => <Home className="text-gray-200" variant="Bulk" />}
-                    >
-                        <Link href="/" className='text-white underline underline-offset-4'>
-                            Home
-                        </Link>
-                    </Breadcrumb.Item>
-                    <Breadcrumb.Item>
-                        <p className='text-white'>Detail</p>
-                    </Breadcrumb.Item>
-                    <Breadcrumb.Item>
-                        <p className='text-white'>{movie?.title}</p>
-                    </Breadcrumb.Item>
-                </Breadcrumb>
-                <div className="absolute top-0 left-0 -z-10 h-screen w-screen">
-                    <Image
-                        src={`${baseUrl}/w1280/${movie?.belongs_to_collection !== null
-                            ? movie?.belongs_to_collection.backdrop_path
-                            : movie?.backdrop_path
-                            }`}
-                        fill
-                        sizes="100%"
-                        priority
-                        style={{ objectFit: 'cover' }}
-                        alt="Mouvee banner"
-                    />
-                </div>
-                <div className="flex absolute mt-[10vh] w-screen">
-                    <div className="grid grid-cols-3 gap-2 w-4/5 mx-auto">
+        <Layout title={movie?.title}>
+            <main>
+                <section className="relative h-screen w-screen bg-gradient-to-t from-black to-transparent">
+                    <Breadcrumb className='absolute ml-5 mt-4 px-5 py-2 rounded-full bg-glass-gray w-fit'>
+                        <Breadcrumb.Item
+                            icon={() => <Home className="text-gray-200" variant="Bulk" />}
+                        >
+                            <Link href="/" className='text-white underline underline-offset-4'>
+                                Home
+                            </Link>
+                        </Breadcrumb.Item>
+                        <Breadcrumb.Item>
+                            <p className='text-white'>Detail</p>
+                        </Breadcrumb.Item>
+                        <Breadcrumb.Item>
+                            <p className='text-white'>{movie?.title}</p>
+                        </Breadcrumb.Item>
+                    </Breadcrumb>
+                    <div className="absolute top-0 left-0 -z-10 h-screen w-screen">
                         <Image
-                            src={`${baseUrl}/w780/${movie?.poster_path}`}
-                            className="rounded-xl"
-                            width={280}
-                            height={320}
-                            alt="Movie Poster"
+                            src={`${baseUrl}/w1280/${movie?.belongs_to_collection !== null
+                                ? movie?.belongs_to_collection.backdrop_path
+                                : movie?.backdrop_path
+                                }`}
+                            fill
+                            sizes="100%"
+                            priority
+                            style={{ objectFit: 'cover' }}
+                            alt="Mouvee banner"
                         />
-                        <div className='flex-col col-start-2 col-span-2' >
-                            <h1 className='text-6xl font-bold'>{movie?.original_title}</h1>
-                            <div className='flex flex-row pb-4 gap-x-4 items-center text-sm pl-2'>
-                                <span className='flex items-center gap-x-1'>
-                                    <Clock className='text-gray-200' variant='Bulk' />
-                                    {new Date(movie.release_date).toLocaleDateString('en', { day: 'numeric', month: 'long', year: 'numeric' })}
-                                </span>
-                                <span>|</span>
-                                <span className='flex items-center gap-x-1'>
-                                    <Star className='text-gray-200' variant='Bulk' />
-                                    {`${(movie.vote_average).toFixed(1)} (${movie.vote_count})`}
-                                </span>
-                            </div>
+                    </div>
+                    <div className="flex absolute mt-[10vh] w-screen">
+                        <div className="grid grid-cols-3 gap-2 w-4/5 mx-auto">
+                            <Image
+                                src={`${baseUrl}/w780/${movie?.poster_path}`}
+                                className="rounded-xl"
+                                width={280}
+                                height={320}
+                                alt="Movie Poster"
+                            />
+                            <div className='flex-col col-start-2 col-span-2' >
+                                <h1 className='text-6xl font-bold'>{movie?.original_title}</h1>
+                                <div className='flex flex-row pb-4 gap-x-4 items-center text-sm pl-2'>
+                                    <span className='flex items-center gap-x-1'>
+                                        <Clock className='text-gray-200' variant='Bulk' />
+                                        {new Date(movie.release_date).toLocaleDateString('en', { day: 'numeric', month: 'long', year: 'numeric' })}
+                                    </span>
+                                    <span>|</span>
+                                    <span className='flex items-center gap-x-1'>
+                                        <Star className='text-gray-200' variant='Bulk' />
+                                        {`${(movie.vote_average).toFixed(1)} (${movie.vote_count})`}
+                                    </span>
+                                </div>
 
-                            <div className='flex flex-row w-full'>
-                                {movie?.genres.map((genre: Genre) => (
-                                    <Badge
-                                        key={genre.id}
-                                        className="mr-2 rounded-full bg-gray-700 text-gray-200 badge-glass-text"
-                                        color="default"
-                                        size="sm"
+                                <div className='flex flex-row w-full'>
+                                    {movie?.genres.map((genre: Genre) => (
+                                        <Badge
+                                            key={genre.id}
+                                            className="mr-2 rounded-full bg-gray-700 text-gray-200 badge-glass-text"
+                                            color="default"
+                                            size="sm"
+                                        >
+                                            {genre.name}
+                                        </Badge>
+                                    ))}
+                                </div>
+                                <p className='py-4 font-medium'>{movie?.overview}</p>
+
+                                <Tabs.Group
+                                    aria-label="Tabs with icons"
+                                    style="underline"
+                                    className="justify-around"
+                                >
+                                    <Tabs.Item
+                                        active
+                                        title="Comment"
+                                        icon={() => <MessageText1 variant='Bold' className='text-purple-700 bg-glass mr-1' />}
                                     >
-                                        {genre.name}
-                                    </Badge>
-                                ))}
-                            </div>
-                            <p className='py-4 font-medium'>{movie?.overview}</p>
+                                        <div className="flex-1 flex-col h-52 overflow-y-scroll scrollbar-all">
+                                            {reviews.results.map((review: any) => {
+                                                const oriUrlAvatar: string = review.author_details.avatar_path
+                                                console.log('Wrong Url Avatar', oriUrlAvatar)
 
-                            <Tabs.Group
-                                aria-label="Tabs with icons"
-                                style="underline"
-                                className="justify-around"
-                            >
-                                <Tabs.Item
-                                    active
-                                    title="Comment"
-                                    icon={() => <MessageText1 variant='Bold' className='text-purple-700 bg-glass mr-1' />}
-                                >
-                                    <div className="flex-1 flex-col h-52 overflow-y-scroll scrollbar-all">
-                                        {reviews.results.map((review: any) => {
-                                            const oriUrlAvatar: string = review.author_details.avatar_path
-                                            console.log('Wrong Url Avatar', oriUrlAvatar)
-
-                                            const urlAvatar = String(oriUrlAvatar).includes("https")
-                                                ? String(oriUrlAvatar).substring(1)
-                                                : oriUrlAvatar === null
-                                                    ? 'https://www.gravatar.com/avatar/f44259356bf6110070ed799323d539d6.jpg'
-                                                    : (baseUrl + '/w185' + oriUrlAvatar)
+                                                const urlAvatar = String(oriUrlAvatar).includes("https")
+                                                    ? String(oriUrlAvatar).substring(1)
+                                                    : oriUrlAvatar === null
+                                                        ? 'https://www.gravatar.com/avatar/f44259356bf6110070ed799323d539d6.jpg'
+                                                        : (baseUrl + '/w185' + oriUrlAvatar)
 
 
-                                            console.log('urlAvatar', urlAvatar)
+                                                console.log('urlAvatar', urlAvatar)
 
-                                            return (
-                                                <div key={review.id} className="flex flex-col bg-glass px-4 py-3 mb-6">
-                                                    <div className="flex flex-row">
-                                                        <Image
-                                                            src={urlAvatar}
-                                                            className="rounded-full"
-                                                            width={50}
-                                                            height={30}
-                                                            alt="Avatar reviewer"
-                                                        />
-                                                        <div className="flex flex-col ml-4">
-                                                            <span className='font-bold'>{review.author}</span>
-                                                            <span className='text-sm'>{moment(review.created_at).fromNow()}</span>
+                                                return (
+                                                    <div key={review.id} className="flex flex-col bg-glass px-4 py-3 mb-6">
+                                                        <div className="flex flex-row">
+                                                            <Image
+                                                                src={urlAvatar}
+                                                                className="rounded-full"
+                                                                width={50}
+                                                                height={30}
+                                                                alt="Avatar reviewer"
+                                                            />
+                                                            <div className="flex flex-col ml-4">
+                                                                <span className='font-bold'>{review.author}</span>
+                                                                <span className='text-sm'>{moment(review.created_at).fromNow()}</span>
+                                                            </div>
                                                         </div>
+                                                        <p className='ml-16 mr-2 w-fit bg-glass-gray p-4 rounded-2xl'>{review.content}</p>
                                                     </div>
-                                                    <p className='ml-16 mr-2 w-fit bg-glass-gray p-4 rounded-2xl'>{review.content}</p>
+                                                )
+                                            })}
+                                        </div>
+                                    </Tabs.Item>
+                                    <Tabs.Item
+                                        title="Cast"
+                                        icon={() => <Personalcard variant="Bold" className='text-purple-700 mr-1' />}
+                                    >
+                                        <div className="grid grid-flow-col overflow-x-scroll gap-x-6 scrollbar-all">
+                                            {credits.cast.map((cast: any) => (
+                                                <div key={cast.id} className="flex flex-row w-max bg-glass-gray px-4 py-3">
+                                                    <Image
+                                                        src={`${baseUrl}/w185/${cast.profile_path}`}
+                                                        className="object-cover rounded"
+                                                        width={80}
+                                                        height={80}
+                                                        alt="Avatar actor"
+                                                    />
+                                                    <p className='flex flex-col pl-2 justify-center items-center'>
+                                                        <span>{cast.name}</span>
+                                                        <span>as</span>
+                                                        <span>{cast.character}</span>
+                                                    </p>
                                                 </div>
-                                            )
-                                        })}
-                                    </div>
-                                </Tabs.Item>
-                                <Tabs.Item
-                                    title="Cast"
-                                    icon={() => <Personalcard variant="Bold" className='text-purple-700 mr-1' />}
-                                >
-                                    <div className="grid grid-flow-col overflow-x-scroll gap-x-6 scrollbar-all">
-                                        {credits.cast.map((cast: any) => (
-                                            <div key={cast.id} className="flex flex-row w-max bg-glass-gray px-4 py-3">
-                                                <Image
-                                                    src={`${baseUrl}/w185/${cast.profile_path}`}
-                                                    className="object-cover rounded"
-                                                    width={80}
-                                                    height={80}
-                                                    alt="Avatar actor"
-                                                />
-                                                <p className='flex flex-col pl-2 justify-center items-center'>
-                                                    <span>{cast.name}</span>
-                                                    <span>as</span>
-                                                    <span>{cast.character}</span>
-                                                </p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </Tabs.Item>
-                                <Tabs.Item
-                                    title="Crew"
-                                    icon={() => <People variant='Bold' className='text-purple-700 mr-1' />}
-                                >
-                                    <div className="grid grid-cols-3 gap-3 h-40 overflow-y-scroll scrollbar-all">
-                                        {credits.crew.map((crew: any) => (
-                                            <div key={crew.id} className="flex w-full">
-                                                <p className='flex flex-col'>
-                                                    <span className='font-bold'>{crew.name}</span>
-                                                    <span className='text-sm'>{crew.job}</span>
-                                                </p>
-                                            </div>
-                                        ))}
-                                    </div>
+                                            ))}
+                                        </div>
+                                    </Tabs.Item>
+                                    <Tabs.Item
+                                        title="Crew"
+                                        icon={() => <People variant='Bold' className='text-purple-700 mr-1' />}
+                                    >
+                                        <div className="grid grid-cols-3 gap-3 h-40 overflow-y-scroll scrollbar-all">
+                                            {credits.crew.map((crew: any) => (
+                                                <div key={crew.id} className="flex w-full">
+                                                    <p className='flex flex-col'>
+                                                        <span className='font-bold'>{crew.name}</span>
+                                                        <span className='text-sm'>{crew.job}</span>
+                                                    </p>
+                                                </div>
+                                            ))}
+                                        </div>
 
-                                </Tabs.Item>
-                            </Tabs.Group>
+                                    </Tabs.Item>
+                                </Tabs.Group>
 
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
-            <section className='relative mt-40 px-4 pb-24 lg:space-y-24 lg:px-16'>
-                <RowFill key={movie.id} title="Similar Movies" movies={similarMovies} />
-            </section>
-        </main>
+                </section>
+                <section className='relative mt-40 px-4 pb-24 lg:space-y-24 lg:px-16'>
+                    <RowFill key={movie.id} title="Similar Movies" movies={similarMovies} />
+                </section>
+            </main>
+        </Layout>
     )
 }
 

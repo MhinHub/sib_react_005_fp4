@@ -6,6 +6,7 @@ import reqApi from '@utils/reqApi';
 import { GetServerSideProps } from 'next';
 import ButtonTab from '@components/atoms/ButtonTab';
 import CardItem from '@components/molecules/CardItem';
+import Layout from '@components/Layout';
 
 interface CategoryProps {
     movies: Details[];
@@ -32,39 +33,41 @@ export default function Category({ movies, categories, totalPages, id, p, name }
 
 
     return (
-        <main>
-            <h1>Browse by Category</h1>
-            {categories.map((category) => (
-                <ButtonTab
-                    key={category.id}
-                    category={category}
-                    name={name}
-                />
-            ))}
-            <div className="grid grid-cols-3 gap-10 mx-20">
-                {movies.map((movie) => (
-                    <CardItem
-                        key={movie.id}
-                        movie={movie}
+        <Layout title={name}>
+            <main>
+                <h1>Browse by Category</h1>
+                {categories.map((category) => (
+                    <ButtonTab
+                        key={category.id}
+                        category={category}
+                        name={name}
                     />
                 ))}
-            </div>
-            <ReactPaginate
-                previousLabel={'<'}
-                nextLabel={'>'}
-                breakLabel={'...'}
-                pageCount={totalPages}
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={3}
-                onPageChange={(e) => {
-                    const selected = e.selected;
-                    setPageActive(selected + 1);
-                    setIdc(id);
-                }}
-                containerClassName={'bg-glass-gray w-max gap-x-4 px-6 py-2 my-10 rounded-full flex justify-center items-center'}
-                activeClassName={'bg-purple-500'}
-            />
-        </main>
+                <div className="grid grid-cols-3 gap-10 mx-20">
+                    {movies.map((movie) => (
+                        <CardItem
+                            key={movie.id}
+                            movie={movie}
+                        />
+                    ))}
+                </div>
+                <ReactPaginate
+                    previousLabel={'<'}
+                    nextLabel={'>'}
+                    breakLabel={'...'}
+                    pageCount={totalPages}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={3}
+                    onPageChange={(e) => {
+                        const selected = e.selected;
+                        setPageActive(selected + 1);
+                        setIdc(id);
+                    }}
+                    containerClassName={'bg-glass-gray w-max gap-x-4 px-6 py-2 my-10 rounded-full flex justify-center items-center'}
+                    activeClassName={'bg-purple-500'}
+                />
+            </main>
+        </Layout>
     )
 }
 
