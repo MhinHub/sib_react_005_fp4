@@ -37,7 +37,7 @@ function Thumbnail({ movie, children, styleImg }: Props) {
       <Image
         src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path || movie.poster_path
           }`}
-        className={`${styleImg} rounded-sm object-cover`}
+        className={`${styleImg} rounded-t-xl object-cover`}
         fill
         loading='lazy'
         sizes='100%'

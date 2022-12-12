@@ -39,19 +39,19 @@ const Home = ({
 
   return (
     <Layout title="Home">
-      <div className={`relative h-screen bg-gradient-to-b lg:h-[140vh] ${showModal && '!h-screen overflow-hidden'}`}>
-        <main className="relative px-4 pb-24 lg:space-y-24 lg:px-16">
+      <main className={`relative ${showModal && '!h-screen overflow-hidden'}`}>
+        {/* <section className="z-0 bg-gradient-to-b h-screen w-screen" > */}
           <Banner mouveeBanner={mouveeBanner} />
-          <section className="md:space-y-24">
-            <RowClean movies={nowPlaying} />
-            <RowCategory categories={categories} categoryMovies={categoryMovies} name={name} />
-            <RowFill title="Top Rated" movies={topRated} />
-            <RowFill title="Popular" movies={popular} />
-            <RowFill title="Upcoming" movies={upcoming} />
-          </section>
-          {showModal && <Modal />}
-        </main>
-      </div>
+        {/* </section> */}
+        <section className="px-6 md:space-y-24 md:px-16">
+          <RowClean movies={nowPlaying} />
+          <RowCategory categories={categories} categoryMovies={categoryMovies} name={name} />
+          <RowFill title="Top Rated" movies={topRated} />
+          <RowFill title="Popular" movies={popular} />
+          <RowFill title="Upcoming" movies={upcoming} />
+        </section>
+        {showModal && <Modal />}
+      </main>
     </Layout>
   )
 }

@@ -4,7 +4,7 @@ const Footer = () => {
     const year = new Date().getFullYear()
 
     return (
-        <footer className='flex w-screen absolute bottom-0'>
+        <footer className='flex w-screen relative mt-10'>
             <div className="flex justify-center items-center py-4 mx-auto">
                 <p className="text-sm text-gray-400">© {year} Mouvee - All rights reserved</p>
             </div>
