@@ -24,6 +24,9 @@
       "@typings": [
         "./typings.d.ts"
       ],
+      "@hooks/*": [
+        "./hooks/*"
+      ],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

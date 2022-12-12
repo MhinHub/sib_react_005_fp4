@@ -1,10 +1,11 @@
-import { SearchNormal1 } from 'iconsax-react'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import useAuth from '../hooks/useAuth'
 import { memo } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import Link from 'next/link'
+import { SearchNormal1, Profile, Archive } from 'iconsax-react'
+import { Dropdown } from 'flowbite-react'
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -38,7 +39,7 @@ function Header() {
 
   return (
     <header className={`${isScrolled ? 'bg-glass-gray h-[10vh] w-full rounded-md' : 'hidden transition'} transition`}>
-      <div className="flex items-center">
+      <Link href="/" className="flex items-center">
         <Image
           src="/static/logo-mouvee.png"
           width={80}
@@ -47,7 +48,7 @@ function Header() {
           alt='logo-mouvee'
         />
         <p className="text-2xl font-bold text-gray-100 invisible md:visible">Mouvee</p>
-      </div>
+      </Link>
 
       <div className="flex items-center space-x-4 text-sm font-light">
         <form onSubmit={handleSearch} className="flex group/nav items-center justify-end">
@@ -60,12 +61,33 @@ function Header() {
           />
           <SearchNormal1 className='text-gray-100 absolute mr-5 group-active/nav:invisible' variant="TwoTone" />
         </form>
-        <img
-          onClick={logout}
-          src="https://rb.gy/g1pwyx"
-          alt=""
-          className="cursor-pointer rounded"
-        />
+
+        <Link href="/watchlist">
+          <Archive className='bg-glass-gray p-2 rounded-full cursor-pointer hover:bg-white/10' size={40} variant="Bold" />
+        </Link>
+
+        <Dropdown
+          label={<Profile variant='Bulk' size={40} className='bg-glass-gray hover:bg-white/10 p-2 rounded-full' />}
+          inline={true}
+          arrowIcon={false}
+          color="dark"
+        >
+          <Dropdown.Header>
+            <span className="block text-sm">
+              Bonnie Green
+            </span>
+            <span className="block text-sm font-medium truncate">
+              bonnie@flowbite.com
+            </span>
+          </Dropdown.Header>
+          <Dropdown.Divider />
+          <Dropdown.Item
+            onClick={logout}
+          >
+            Sign out
+          </Dropdown.Item>
+        </Dropdown>
+
       </div>
     </header>
   )

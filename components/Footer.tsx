@@ -4,8 +4,8 @@ const Footer = () => {
     const year = new Date().getFullYear()
 
     return (
-        <footer className='bottom-0'>
-            <div className="flex-1 justify-center items-center py-4">
+        <footer className='flex w-screen absolute bottom-0'>
+            <div className="flex justify-center items-center py-4 mx-auto">
                 <p className="text-sm text-gray-400">© {year} Mouvee - All rights reserved</p>
             </div>
         </footer>

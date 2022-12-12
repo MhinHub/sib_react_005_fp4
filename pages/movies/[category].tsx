@@ -33,7 +33,7 @@ export default function Category({ movies, categories, totalPages, id, p, name }
 
     return (
         <main>
-            <h1>Browser by Category</h1>
+            <h1>Browse by Category</h1>
             {categories.map((category) => (
                 <ButtonTab
                     key={category.id}
