@@ -92,3 +92,12 @@
     clip-path: circle(50% at 50% 50%);
   }
 }
+
+.scroll-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  will-change: transform;
+}
