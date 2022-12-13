@@ -36,19 +36,18 @@ function Banner({ mouveeBanner }: Props) {
   }, [mouveeBanner])
 
   return (
-    <div className="flex flex-col w-screen h-[70vh]">
-      <div className="absolute top-0 left-0 -z-20 h-[95vh] w-screen">
+    <div className="flex flex-col w-full md:w-screen h-[30vh] md:h-[70vh]">
+      <div className="absolute top-0 left-0 -z-10 h-[35vh] md:h-[95vh] w-full md:w-screen">
         <Image
           src={`${baseUrl}${movie?.backdrop_path || movie?.poster_path}`}
           fill
-          sizes='100%'
           priority
           style={{ objectFit: 'cover' }}
           alt="Mouvee banner"
         />
       </div>
       <div className='absolute top-0 left-0 bg-gradient-to-b from-transparent to-black -z-10 h-[95vh] w-screen'></div>
-      <section className="flex flex-col space-y-2 py-16 mx-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-12">
+      <section className="flex flex-col space-y-2 py-10 md:py-16 mx-6 md:mx-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-12">
         <h1 className="text-2xl font-bold md:text-4xl lg:text-6xl">
           {movie?.title || movie?.name || movie?.original_name}
         </h1>
@@ -57,13 +56,13 @@ function Banner({ mouveeBanner }: Props) {
         </p>
         <div className="flex space-x-3">
           <button
-            className="flex bg-glass-gray items-center rounded-full px-4 py-2 text-base font-bold text-white hover:bg-opacity-20"
+            className="flex bg-glass-gray items-center rounded-full px-2 md:px-4 py-1 md:py-2 text-sm md:text-base font-medium md:font-bold text-white hover:bg-opacity-20"
             onClick={() => {
               setCurrentMovie(movie)
               setShowModal(true)
             }}
           >
-            More Info <InformationCircleIcon className="h-5 w-5 md:h-8 md:w-8" />
+            More Info <InformationCircleIcon className="h-4 w-4 md:h-8 md:w-8" />
           </button>
         </div>
       </section>

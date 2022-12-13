@@ -59,20 +59,21 @@ function Header() {
           <input
             type="text"
             placeholder="Search movie..."
-            className="bg-glass-gray w-48 h-10 md:w-96 rounded-full px-5"
+            className="bg-glass-gray w-60 h-10 md:w-96 rounded-full px-5"
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
           />
           <SearchNormal1 className='text-gray-100 absolute mr-5 group-active/nav:invisible' variant="TwoTone" />
         </form>
 
-        <Link href="/watchlist">
+        <Link href="/watchlist" className='hidden md:block'>
           <button className='flex justify-end'>
             <Archive className='bg-glass-gray p-2 rounded-full cursor-pointer hover:bg-white/10' size={40} variant="Bold" />
             <span className="flex absolute justify-center items-center w-4 h-4 text-xs font-medium p-2 text-white bg-red-500 rounded-full">{list.length}</span>
           </button>
         </Link>
 
+        <div className='hidden md:block'>
         <Dropdown
           label={<Profile variant='Bulk' size={40} className='bg-glass-gray hover:bg-white/10 p-2 rounded-full' />}
           inline={true}
@@ -93,7 +94,8 @@ function Header() {
           >
             Sign out
           </Dropdown.Item>
-        </Dropdown>
+          </Dropdown>
+        </div>
 
       </div>
     </header>
