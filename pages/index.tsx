@@ -32,8 +32,6 @@ const Home = ({
 }: Props) => {
   // const showModal = useRecoilValue(modalState)
 
-  console.log('Top Rated: ', topRated)
-
   return (
     <Layout title="Home">
       <main className={`relative`}>
