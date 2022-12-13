@@ -105,19 +105,19 @@ function Navbar() {
         <div className="flex items-center justify-around p-4">
           <button className="flex flex-col items-center justify-center">
             <Link href="/">
-              <Home variant="Bold" size={40} className={`text-gray-100 ${router.pathname === '/' && 'text-purple-500'}`} />
+              <Home variant="Bold" size={35} className={`text-gray-100 ${router.pathname === '/' && 'text-purple-500'}`} />
             </Link>
             <span className="text-xs text-gray-100">Home</span>
           </button>
           <button className="flex flex-col items-center justify-center">
             <Link href="/watchlist">
-              <Archive variant="Bold" size={40} className={`text-gray-100 ${router.pathname === '/watchlist' && 'text-purple-500'}`} />
+              <Archive variant="Bold" size={35} className={`text-gray-100 ${router.pathname === '/watchlist' && 'text-purple-500'}`} />
             </Link>
             <span className="text-xs text-gray-100">Watchlist</span>
           </button>
           <button className="flex flex-col items-center justify-center">
             <Link href="/profile">
-              <Profile variant="Bold" size={40} className='text-gray-100' />
+              <Profile variant="Bold" size={35} className='text-gray-100' />
             </Link>
             <span className="text-xs text-gray-100">Profile</span>
           </button>
