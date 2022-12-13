@@ -46,7 +46,7 @@ function Banner({ mouveeBanner }: Props) {
           alt="Mouvee banner"
         />
       </div>
-      <div className='absolute top-0 left-0 bg-gradient-to-b from-transparent to-black -z-10 h-[35vh] md:h-[95vh] w-screen'></div>
+      <div className='absolute top-0 left-0 bg-gradient-to-b from-transparent to-black -z-10 h-[36vh] md:h-[95vh] w-screen'></div>
       <section className="flex flex-col space-y-2 py-10 md:py-16 mx-6 md:mx-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-12">
         <h1 className="text-2xl font-bold md:text-4xl lg:text-6xl">
           {movie?.title || movie?.name || movie?.original_name}
