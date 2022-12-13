@@ -29,6 +29,27 @@ const Detail = ({ movie, credits, similarMovies, reviews }: Props) => {
     console.log('Similar Movies', similarMovies)
     console.log('Reviews', reviews)
 
+    const [deviveType, setDeviceType] = useState('desktop')
+
+    const getDeviceType = () => {
+        const ua = navigator.userAgent;
+        if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+            return "tablet";
+        }
+        if (
+            /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+                ua
+            )
+        ) {
+            return "mobile";
+        }
+        return "desktop";
+    };
+
+    useEffect(() => {
+        setDeviceType(getDeviceType())
+    }, [])
+
     return (
         <Layout title={movie?.title}>
             <main>
@@ -50,10 +71,9 @@ const Detail = ({ movie, credits, similarMovies, reviews }: Props) => {
                     </Breadcrumb>
                     <div className="absolute top-0 left-0 -z-10 h-screen w-screen">
                         <Image
-                            src={`${baseUrl}/w1280/${movie?.belongs_to_collection !== null
-                                ? movie?.belongs_to_collection.backdrop_path
-                                : movie?.backdrop_path
-                                }`}
+                            src={`${deviveType === 'desktop' || deviveType === 'tablet'
+                                ? baseUrl + '/w1280' + movie?.backdrop_path
+                                : baseUrl + '/w780' + movie?.poster_path}`}
                             fill
                             sizes="100%"
                             priority
@@ -62,15 +82,15 @@ const Detail = ({ movie, credits, similarMovies, reviews }: Props) => {
                         />
                     </div>
                     <div className="flex absolute mt-[10vh] w-screen">
-                        <div className="grid grid-cols-3 gap-2 w-4/5 mx-auto">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 w-4/5 mx-auto">
                             <Image
                                 src={`${baseUrl}/w780/${movie?.poster_path}`}
-                                className="rounded-xl"
+                                className="md:rounded-xl max-sm:hidden"
                                 width={280}
                                 height={320}
                                 alt="Movie Poster"
                             />
-                            <div className='flex-col col-start-2 col-span-2' >
+                            <div className='flex-col md:col-start-2 md:col-span-2' >
                                 <h1 className='text-6xl font-bold'>{movie?.original_title}</h1>
                                 <div className='flex flex-row pb-4 gap-x-4 items-center text-sm pl-2'>
                                     <span className='flex items-center gap-x-1'>
@@ -123,7 +143,7 @@ const Detail = ({ movie, credits, similarMovies, reviews }: Props) => {
                                                 console.log('urlAvatar', urlAvatar)
 
                                                 return (
-                                                    <div key={review.id} className="flex flex-col bg-glass px-4 py-3 mb-6">
+                                                    <div key={review.id} className="flex flex-col w-full bg-glass px-4 py-3 mb-6">
                                                         <div className="flex flex-row">
                                                             <Image
                                                                 src={urlAvatar}
