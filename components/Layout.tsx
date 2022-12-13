@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Header from './Header'
+import Navbar from './Navbar'
 import Footer from './Footer'
 import { ScrollerMotion } from 'scroller-motion'
 import useStore from '../core/zustand/store'
@@ -13,7 +13,7 @@ const Layout = ({ children, title }: any) => {
             <Head>
                 <title>{title} - Mouvee</title>
             </Head>
-            <Header />
+            <Navbar />
             {/* <ScrollerMotion
                 scale={1.5}
             > */}
