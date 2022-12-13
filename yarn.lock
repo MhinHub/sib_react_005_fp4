@@ -1968,13 +1968,6 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/gsap@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@types/gsap/-/gsap-3.0.0.tgz#28dc350ad89b6d19b13c8edbdf1dd74e8ee5c84f"
-  integrity sha512-BbWLi4WRHGze4C8NV7U7yRevuBFiPkPZZyGa0rryanvh/9HPUFXTNBXsGQxJZJq7Ix7j4RXMYodP3s+OsqCErg==
-  dependencies:
-    gsap "*"
-
 "@types/json-schema@^7.0.5", "@types/json-schema@^7.0.8":
   version "7.0.11"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.11.tgz#d421b6c527a3037f7c84433fd2c4229e016863d3"
@@ -3222,11 +3215,6 @@ graceful-fs@^4.1.6, graceful-fs@^4.2.0:
   version "4.2.10"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.10.tgz#147d3a006da4ca3ce14728c7aefc287c367d7a6c"
   integrity sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==
-
-gsap@*, "gsap@npm:@gsap/member@^3.11.3":
-  version "3.11.3"
-  resolved "https://npm.greensock.com/@gsap%2fmember/-/member-3.11.3.tgz#be2d278d9efd6d3b5d40a0cdfe8155111a810773"
-  integrity sha512-CG+jmt19SSM2C2aqAryDdTvuYNzPBNE5d6dq1bhH/nBRBeUvslOk3CV3WxmkAZKXLUzoAG9ORdRDmfkHYTNsuw==
 
 hamt_plus@1.0.2:
   version "1.0.2"

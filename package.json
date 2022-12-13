@@ -39,7 +39,6 @@
     "zustand": "^4.1.4"
   },
   "devDependencies": {
-    "@types/gsap": "^3.0.0",
     "@types/node": "^18.11.10",
     "@types/react": "^18.0.25",
     "autoprefixer": "^10.4.13",
