@@ -81,7 +81,7 @@
   }
 
   .bg-glass-gray {
-    @apply bg-gray-500 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10;
+    @apply bg-gray-300 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10;
   }
 
   .badge-glass-text{
