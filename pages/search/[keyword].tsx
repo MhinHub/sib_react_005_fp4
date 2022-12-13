@@ -16,7 +16,7 @@ const Search = ({ movie, keyword, totalResults }: SearchProps) => {
         <Layout title="Search">
             <main>
                 <h1>{totalResults} total Result for "{keyword}"</h1>
-                <section className="mx-20 grid grid-cols-3 gap-10">
+                <section className="mx-auto md:mx-20 grid grid-cols-1 md:grid-cols-3 gap-10">
                     {movie.map((movie: any) => (
                         <CardItem key={movie.id} movie={movie} />
                     ))}
