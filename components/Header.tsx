@@ -42,7 +42,7 @@ function Header() {
 
 
   return (
-    <header className={`${isScrolled ? 'bg-glass-gray h-[10vh] w-full rounded-md' : 'hidden transition'} transition`}>
+    <header className={`${isScrolled ? 'bg-glass-gray h-[10vh] w-full rounded-md' : 'hidden transition'} transition ease-in-out duration-75`}>
       <Link href="/" className="flex items-center">
         <Image
           src="/static/logo-mouvee.png"

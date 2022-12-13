@@ -19,7 +19,6 @@
     "flowbite": "^1.5.4",
     "flowbite-react": "^0.3.6",
     "framer-motion": "^7.7.1",
-    "gsap": "npm:@gsap/member@^3.11.3",
     "iconsax-react": "^0.0.8",
     "moment": "^2.29.4",
     "next": "^13.0.5",
