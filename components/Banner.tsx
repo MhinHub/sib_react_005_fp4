@@ -36,7 +36,7 @@ function Banner({ mouveeBanner }: Props) {
   }, [mouveeBanner])
 
   return (
-    <div className="flex flex-col w-full md:w-screen h-[30vh] md:h-[70vh]">
+    <div className="flex flex-col w-full md:w-screen h-[32vh] md:h-[70vh]">
       <div className="absolute top-0 left-0 -z-10 h-[35vh] md:h-[95vh] w-full md:w-screen">
         <Image
           src={`${baseUrl}${movie?.backdrop_path || movie?.poster_path}`}
@@ -48,7 +48,7 @@ function Banner({ mouveeBanner }: Props) {
       </div>
       <div className='absolute top-0 left-0 bg-gradient-to-b from-transparent to-black -z-10 h-[36vh] md:h-[95vh] w-screen'></div>
       <section className="flex flex-col space-y-2 py-10 md:py-16 mx-6 md:mx-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-12">
-        <h1 className="text-4xl font-bold md:text-4xl lg:text-6xl">
+        <h1 className="text-3xl font-bold md:text-4xl lg:text-6xl">
           {movie?.title || movie?.name || movie?.original_name}
         </h1>
         <p className="max-w-xs leading-3 text-xs text-shadow-md md:max-w-lg lg:max-w-2xl lg:text-base">

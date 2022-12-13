@@ -5,7 +5,7 @@
 /* html, body, heading */
 @layer base {
   body {
-    @apply bg-black text-white md:scrollbar-all overscroll-y-none;
+    @apply bg-black text-white scrollbar-hide md:scrollbar-all overscroll-y-none;
   }
 
   header {

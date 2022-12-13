@@ -26,8 +26,8 @@ export default class MyDocument extends Document {
                     <meta charSet="UTF-8" />
                     <link rel="manifest" href="/manifest.json" />
                     <link rel="apple-touch-icon" href="/icon-192x192.png" />
-                    <meta name="theme-color" content="#605dc5" />
-                    <meta name="msapplication-navbutton-color" content="#605dc5" />
+                    <meta name="theme-color" content="#9061f9" />
+                    <meta name="msapplication-navbutton-color" content="#9061f9" />
                 </Head>
                 <body>
                     <Main />
