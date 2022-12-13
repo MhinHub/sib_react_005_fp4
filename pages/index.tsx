@@ -1,9 +1,7 @@
 import Layout from '@components/Layout'
 // import { useRecoilValue } from 'recoil'
 // import { modalState, movieState } from '../atoms/modalAtom'
-import useStore from '../core/zustand/store'
 import Banner from '../components/Banner'
-import Modal from '../components/Modal'
 import RowClean from '../components/RowClean'
 import RowFill from '../components/RowFill'
 import { Movie, CategoryTypes } from '../typings'
@@ -33,13 +31,12 @@ const Home = ({
   name
 }: Props) => {
   // const showModal = useRecoilValue(modalState)
-  const showModal = useStore((state: any) => state.isModalState)
 
   console.log('Top Rated: ', topRated)
 
   return (
     <Layout title="Home">
-      <main className={`relative ${showModal && '!h-screen overflow-hidden'}`}>
+      <main className={`relative`}>
         <Banner mouveeBanner={mouveeBanner} />
         <section className="px-6 md:space-y-24 md:px-16">
           <RowClean movies={nowPlaying} />
@@ -48,7 +45,6 @@ const Home = ({
           <RowFill title="Popular" movies={popular} />
           <RowFill title="Upcoming" movies={upcoming} />
         </section>
-        {showModal && <Modal />}
       </main>
     </Layout>
   )
