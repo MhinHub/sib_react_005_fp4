@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
       <NextNprogress
-        color="#fff"
+        color="#7254d6"
         options={{ showSpinner: false }}
         showOnShallow={true}
         startPosition={0.3}

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Header from './Header'
 import Footer from './Footer'
-import SmoothScroll from './SmoothScroll'
+import { ScrollerMotion } from 'scroller-motion'
 
 const Layout = ({ children, title }: any) => {
     return (
@@ -10,9 +10,11 @@ const Layout = ({ children, title }: any) => {
                 <title>{title} - Mouvee</title>
             </Head>
             <Header />
-            <SmoothScroll>
-                {children}
-            </SmoothScroll>
+            {/* <ScrollerMotion
+                scale={1.5}
+            > */}
+            {children}
+            {/* </ScrollerMotion> */}
             <Footer />
         </>
     )

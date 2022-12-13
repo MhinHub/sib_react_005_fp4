@@ -40,9 +40,7 @@ const Home = ({
   return (
     <Layout title="Home">
       <main className={`relative ${showModal && '!h-screen overflow-hidden'}`}>
-        {/* <section className="z-0 bg-gradient-to-b h-screen w-screen" > */}
-          <Banner mouveeBanner={mouveeBanner} />
-        {/* </section> */}
+        <Banner mouveeBanner={mouveeBanner} />
         <section className="px-6 md:space-y-24 md:px-16">
           <RowClean movies={nowPlaying} />
           <RowCategory categories={categories} categoryMovies={categoryMovies} name={name} />
