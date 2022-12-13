@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { SearchNormal1, Profile, Archive } from 'iconsax-react'
 import { Dropdown } from 'flowbite-react'
+import { AnimatePresence, motion } from 'framer-motion'
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
