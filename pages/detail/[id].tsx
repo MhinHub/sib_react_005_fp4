@@ -91,7 +91,7 @@ const Detail = ({ movie, credits, similarMovies, reviews }: Props) => {
                                 alt="Movie Poster"
                             />
                             <div className='flex-col md:col-start-2 md:col-span-2' >
-                                <h1 className='text-6xl font-bold'>{movie?.original_title}</h1>
+                                <h1 className='text-4xl md:text-6xl font-bold'>{movie?.original_title}</h1>
                                 <div className='flex flex-row pb-4 gap-x-4 items-center text-sm pl-2'>
                                     <span className='flex items-center gap-x-1'>
                                         <Clock className='text-gray-200' variant='Bulk' />

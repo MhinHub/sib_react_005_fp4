@@ -48,10 +48,10 @@ function Banner({ mouveeBanner }: Props) {
       </div>
       <div className='absolute top-0 left-0 bg-gradient-to-b from-transparent to-black -z-10 h-[36vh] md:h-[95vh] w-screen'></div>
       <section className="flex flex-col space-y-2 py-10 md:py-16 mx-6 md:mx-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-12">
-        <h1 className="text-2xl font-bold md:text-4xl lg:text-6xl">
+        <h1 className="text-4xl font-bold md:text-4xl lg:text-6xl">
           {movie?.title || movie?.name || movie?.original_name}
         </h1>
-        <p className="max-w-xs text-xs text-shadow-md md:max-w-lg lg:max-w-2xl lg:text-base">
+        <p className="max-w-xs leading-3 text-xs text-shadow-md md:max-w-lg lg:max-w-2xl lg:text-base">
           {movie?.overview}
         </p>
         <div className="flex space-x-3">
