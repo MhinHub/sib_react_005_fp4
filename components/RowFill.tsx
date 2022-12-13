@@ -35,7 +35,7 @@ function RowFill({ title, movies, tabs }: Props) {
     // console.log('RowFill Mouvies', movies)
 
     return (
-        <div className="h-80 space-y-0.5 md:space-y-2">
+        <div className="h-[22rem] space-y-0.5 md:space-y-2">
             <div className="flex items-center justify-between my-4 px-4">
                 <h2 className="w-fit cursor-pointer text-sm font-semibold text-[#e5e5e5] transition duration-200 hover:text-white md:text-2xl">
                     {title}

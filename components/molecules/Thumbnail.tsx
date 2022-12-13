@@ -32,7 +32,7 @@ function Thumbnail({ movie, children, styleImg }: Props) {
 
   return (
     <div
-      className={`relative group/thumb h-28 min-w-[280px] transition duration-200 ease-out md:h-48 md:w-full md:hover:scale-105`}
+      className={`relative group/thumb h-40 min-w-[280px] transition duration-200 ease-out md:h-50 md:w-full md:hover:scale-105`}
     >
       <Image
         src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path || movie.poster_path
@@ -43,7 +43,7 @@ function Thumbnail({ movie, children, styleImg }: Props) {
         sizes='100%'
         alt="Mouvee thumbnail"
       />
-      <div className='invisible group-hover/thumb:visible absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+      <div className='md:invisible group-hover/thumb:visible absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
         <Tooltip
           content="Play Trailer"
           style="dark"
@@ -64,7 +64,7 @@ function Thumbnail({ movie, children, styleImg }: Props) {
 
       <Link
         href={`/detail/${movie.id}`}
-        className='invisible group-hover/thumb:visible absolute top-1/2 right-2 transform -translate-y-1/2'
+        className='md:invisible group-hover/thumb:visible absolute top-1/2 right-2 transform -translate-y-1/2'
       >
         <Tooltip
           content="Detail Movie"

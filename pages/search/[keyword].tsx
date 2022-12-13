@@ -14,8 +14,8 @@ interface SearchProps {
 const Search = ({ movie, keyword, totalResults }: SearchProps) => {
     return (
         <Layout title="Search">
-            <main>
-                <h1>{totalResults} total Result for "{keyword}"</h1>
+            <main className='mx-6'>
+                <h1 className="text-center my-10">{totalResults} total Result for "{keyword}"</h1>
                 <section className="mx-auto md:mx-20 grid grid-cols-1 md:grid-cols-3 gap-10">
                     {movie.map((movie: any) => (
                         <CardItem key={movie.id} movie={movie} />

@@ -12,7 +12,7 @@ const CardItem = ({ movie }: any) => {
         return str?.length > n ? str.substring(0, n - 1) + '...' : str
     }
     return (
-        <div key={movie.id} className={`flex-col group/card pt-3 px-4 h-fit rounded-2xl bg-glass-gray transition duration-500 ease-out hover:scale-105`}>
+        <div key={movie.id} className={`flex-col group/card pt-3 px-4 h-fit rounded-2xl bg-glass-gray transition duration-500 ease-out md:hover:scale-105`}>
             <Thumbnail movie={movie} styleImg="rounded-t-xl w-full" >
                 <p className='absolute font-medium pt-1 text-center bg-glass w-full bottom-0 rounded-b-md'>{movie.title}</p>
             </Thumbnail>
@@ -36,7 +36,7 @@ const CardItem = ({ movie }: any) => {
                     </span>
                 </div>
             </p>
-            <p className={`text-sm hidden group-hover/card:block font-light pb-2 px-1`}>{truncate(movie.overview)}</p>
+            <p className={`text-sm md:hidden group-hover/card:block font-light pb-2 px-1`}>{truncate(movie.overview)}</p>
         </div>
     )
 }
