@@ -81,10 +81,10 @@ function Header() {
         >
           <Dropdown.Header>
             <span className="block text-sm">
-              Bonnie Green
+              Signed in as
             </span>
             <span className="block text-sm font-medium truncate">
-              bonnie@flowbite.com
+              {user?.email}
             </span>
           </Dropdown.Header>
           <Dropdown.Divider />
