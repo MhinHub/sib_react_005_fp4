@@ -20,7 +20,6 @@ import useAuth from '../hooks/useAuth'
 import { Element, Genre, Movie } from '../typings'
 import axios from 'axios'
 import { memo } from 'react'
-import { GetServerSideProps } from 'next'
 
 function Modal() {
   // const [showModal, setShowModal] = useRecoilState(modalState)
@@ -44,6 +43,8 @@ function Modal() {
   const { user } = useAuth()
   const [addedToList, setAddedToList] = useState(false)
   const [movies, setMovies] = useState<DocumentData[] | Movie[]>([])
+
+  const [isLiked, setIsLiked] = useState(false)
 
   const toastStyle = {
     background: 'white',
@@ -109,7 +110,7 @@ function Modal() {
       toast(
         `${movie?.title || movie?.original_name} has been removed from My List`,
         {
-          duration: 8000,
+          duration: 2000,
           style: toastStyle,
         }
       )
@@ -122,7 +123,7 @@ function Modal() {
       toast(
         `${movie?.title || movie?.original_name} has been added to My List`,
         {
-          duration: 8000,
+          duration: 2000,
           style: toastStyle,
         }
       )
@@ -139,15 +140,15 @@ function Modal() {
     <MuiModal
       open={showModal}
       onClose={handleClose}
-      className="absolute z-40  mx-auto w-full max-w-5xl overflow-hidden overflow-y-scroll rounded-md scrollbar-hide"
+      className="absolute z-40 mt-3 mx-auto w-full max-w-5xl overflow-hidden overflow-y-scroll rounded-md scrollbar-hide"
     >
       <>
         <Toaster position="bottom-center" />
         <button
           onClick={handleClose}
-          className="absolute right-1 top-1 z-50"
+          className="absolute right-0 top-0 z-50"
         >
-          <CloseCircle size={40} variant='Bulk' />
+          <CloseCircle size={40} className="hover:text-red-500" variant='Bulk' />
         </button>
 
         <div className="relative pt-[56.25%]">
@@ -170,21 +171,24 @@ function Modal() {
 
               <button className="modalButton" onClick={handleList}>
                 {addedToList ? (
-                  <ArchiveTick className="h-7 w-7" variant='Bulk' />
+                  <ArchiveTick className="h-7 w-7 text-green-400" variant='Bulk' />
                 ) : (
                     <ArchiveAdd className="h-7 w-7" variant='Bulk' />
                 )}
               </button>
 
-              <button className="modalButton">
-                <Like1 className="h-7 w-7" variant='Bulk' />
+              <button
+                className="modalButton"
+                onClick={() => setIsLiked(!isLiked)}
+              >
+                <Like1 className={`h-7 w-7 ${isLiked && 'text-blue-500'}`} variant='Bulk' />
               </button>
             </div>
             <button className="modalButton" onClick={() => setMuted(!muted)}>
               {muted ? (
                 <VolumeSlash className="h-6 w-6" variant='Bulk' />
               ) : (
-                  <VolumeHigh className="h-6 w-6" variant='Bulk' />
+                  <VolumeHigh className="h-6 w-6 text-purple-400" variant='Bulk' />
               )}
             </button>
           </div>
