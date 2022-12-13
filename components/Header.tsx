@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import useAuth from '../hooks/useAuth'
 import { memo } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
@@ -7,10 +6,14 @@ import Link from 'next/link'
 import { SearchNormal1, Profile, Archive } from 'iconsax-react'
 import { Dropdown } from 'flowbite-react'
 import { AnimatePresence, motion } from 'framer-motion'
+import useList from '@hooks/useList'
+import useAuth from '@hooks/useAuth'
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
-  const { logout } = useAuth()
+  const { logout, user } = useAuth()
+
+  const list = useList(user?.uid)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,7 +67,10 @@ function Header() {
         </form>
 
         <Link href="/watchlist">
-          <Archive className='bg-glass-gray p-2 rounded-full cursor-pointer hover:bg-white/10' size={40} variant="Bold" />
+          <button className='flex justify-end'>
+            <Archive className='bg-glass-gray p-2 rounded-full cursor-pointer hover:bg-white/10' size={40} variant="Bold" />
+            <span className="flex absolute justify-center items-center w-4 h-4 text-xs font-medium p-2 text-white bg-red-500 rounded-full">{list.length}</span>
+          </button>
         </Link>
 
         <Dropdown
