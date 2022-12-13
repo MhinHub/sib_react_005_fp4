@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import { AuthProvider } from '../hooks/useAuth'
 // import { RecoilRoot } from 'recoil'
 import NextNprogress from 'nextjs-progressbar'
+import Loader from '@components/Loader'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -15,6 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         stopDelayMs={200}
         height={3}
       />
+      <Loader />
       <Component {...pageProps} />
     </AuthProvider>
   )
