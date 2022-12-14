@@ -80,12 +80,12 @@ Halaman ini muncul ketika pengguna melakukan pencarian film. Halaman ini berisi 
 <img src="https://i.postimg.cc/PCSSQx5t/mobile-3.png" width="18%"/>
 
 
-### 6. Halaman About Dev (About Dev) 👨‍💻 
+### 7. Halaman About Dev (About Dev) 👨‍💻 
 Halaman ini berada di footer web app. Halaman ini berisi informasi mengenai developer dan info secara singkat pada proses management pengembangan web.
 
 ![sc about-dev](./README-ASSET/page/about-dev.png)
 
-### 7. Halaman Tidak Ditemukan (404) 🚫
+### 8. Halaman Tidak Ditemukan (404) 🚫
 Halaman ini muncul ketika pengguna mengakses halaman yang tidak ada. Halaman ini berisi informasi mengenai halaman yang tidak ditemukan.
 
 <div align="left"> 
