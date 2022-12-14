@@ -1,4 +1,4 @@
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline'
+import { ArrowCircleLeft, ArrowCircleRight } from 'iconsax-react'
 import { useRef, useState } from 'react'
 import { Movie } from '../typings'
 import Thumbnail from './molecules/Thumbnail'
@@ -31,10 +31,11 @@ function RowClean({ movies }: Props) {
   return (
     <div className="h-44 space-y-0.5 md:space-y-2">
       <div className="group relative md:-ml-2">
-        <ChevronLeftIcon
+        <ArrowCircleLeft
           className={`absolute top-0 bottom-0 left-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100 ${!isMoved && 'hidden'
             }`}
           onClick={() => handleClick('left')}
+          variant="Bulk"
         />
 
         <div
@@ -46,9 +47,10 @@ function RowClean({ movies }: Props) {
           ))}
         </div>
 
-        <ChevronRightIcon
+        <ArrowCircleRight
           className={`absolute top-0 bottom-0 right-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100`}
           onClick={() => handleClick('right')}
+          variant="Bulk"
         />
       </div>
     </div>

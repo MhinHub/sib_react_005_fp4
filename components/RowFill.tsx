@@ -1,4 +1,3 @@
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline'
 import { ArrowCircleLeft, ArrowCircleRight } from 'iconsax-react'
 import { useRef, useState } from 'react'
 import { Movie } from '../typings'

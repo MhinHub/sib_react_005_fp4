@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { Movie, Details } from '../typings'
-import { InformationCircleIcon } from '@heroicons/react/solid'
+import { InfoCircle } from 'iconsax-react'
 // import { useRecoilState } from 'recoil'
 // import { modalState, movieState } from '../atoms/modalAtom'
 import useStore from '../core/zustand/store'
@@ -62,7 +62,7 @@ function Banner({ mouveeBanner }: Props) {
               setShowModal(true)
             }}
           >
-            More Info <InformationCircleIcon className="h-4 w-4 md:h-8 md:w-8" />
+            More Info <InfoCircle className="h-4 w-4 md:h-6 md:w-6" variant='Bold' />
           </button>
         </div>
       </section>
