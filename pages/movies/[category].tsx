@@ -35,15 +35,17 @@ export default function Category({ movies, categories, totalPages, id, p, name }
     return (
         <Layout title={name}>
             <main>
-                <h1>Browse by Category</h1>
-                {categories.map((category) => (
-                    <ButtonTab
-                        key={category.id}
-                        category={category}
-                        name={name}
-                    />
-                ))}
-                <div className="grid grid-cols-3 gap-10 mx-20">
+                <h1 className="text-center font-bold text-3xl my-3">Browse by Category</h1>
+                <div className="flex space-x-2 overflow-x-scroll my-4 scrollbar-hide md:space-x-3 md:p-2">
+                    {categories.map((category) => (
+                        <ButtonTab
+                            key={category.id}
+                            category={category}
+                            name={name}
+                        />
+                    ))}
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mx-6 md:mx-20">
                     {movies.map((movie) => (
                         <CardItem
                             key={movie.id}
@@ -51,21 +53,23 @@ export default function Category({ movies, categories, totalPages, id, p, name }
                         />
                     ))}
                 </div>
-                <ReactPaginate
-                    previousLabel={'<'}
-                    nextLabel={'>'}
-                    breakLabel={'...'}
-                    pageCount={totalPages}
-                    marginPagesDisplayed={2}
-                    pageRangeDisplayed={3}
-                    onPageChange={(e) => {
-                        const selected = e.selected;
-                        setPageActive(selected + 1);
-                        setIdc(id);
-                    }}
-                    containerClassName={'bg-glass-gray w-max gap-x-4 px-6 py-2 my-10 rounded-full flex justify-center items-center'}
-                    activeClassName={'bg-purple-500'}
-                />
+                <div className="flex justify-center my-10">
+                    <ReactPaginate
+                        previousLabel={'<'}
+                        nextLabel={'>'}
+                        breakLabel={'...'}
+                        pageCount={totalPages}
+                        marginPagesDisplayed={2}
+                        pageRangeDisplayed={3}
+                        onPageChange={(e) => {
+                            const selected = e.selected;
+                            setPageActive(selected + 1);
+                            setIdc(id);
+                        }}
+                        containerClassName={'bg-glass-gray w-max gap-x-4 px-6 py-2 my-10 rounded-full flex justify-center items-center'}
+                        activeClassName={'bg-purple-500 px-4 py-2 rounded-full'}
+                    />
+                </div>
             </main>
         </Layout>
     )
