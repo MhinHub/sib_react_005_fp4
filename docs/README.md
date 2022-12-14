@@ -121,6 +121,17 @@ git push origin <nama-branch>
 ---
 <br/>
 
+## API 📡
+<img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" width="100"/>
+
+
+- [TMDB](https://www.themoviedb.org/documentation/api)
+- [Docs](https://developers.themoviedb.org/3/getting-started/introduction)
+
+
+---
+<br/>
+
 ## Top Technology 🚀
 <div align="left"> 
 <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg" alt="Typescript" width="40" height="40"/>
