@@ -79,13 +79,7 @@ Halaman ini muncul ketika pengguna melakukan pencarian film. Halaman ini berisi 
 <img src="https://i.postimg.cc/nczCnMKr/dgdgd.png" alt="Search Result" width="80%"/>
 <img src="https://i.postimg.cc/PCSSQx5t/mobile-3.png" width="18%"/>
 
-
-### 7. Halaman About Dev (About Dev) 👨‍💻 
-Halaman ini berada di footer web app. Halaman ini berisi informasi mengenai developer dan info secara singkat pada proses management pengembangan web.
-
-![sc about-dev](./README-ASSET/page/about-dev.png)
-
-### 8. Halaman Tidak Ditemukan (404) 🚫
+### 7. Halaman Tidak Ditemukan (404) 🚫
 Halaman ini muncul ketika pengguna mengakses halaman yang tidak ada. Halaman ini berisi informasi mengenai halaman yang tidak ditemukan.
 
 <div align="left"> 
@@ -93,6 +87,15 @@ Halaman ini muncul ketika pengguna mengakses halaman yang tidak ada. Halaman ini
 <img src="https://i.postimg.cc/RFqNhKMF/mobile.png" width="18%"/>
 </div>
 
+### 8. Halaman About Dev (About Dev) 👨‍💻 
+Halaman ini berada di footer web app. Halaman ini berisi informasi mengenai developer dan info secara singkat pada proses management pengembangan web.
+
+<div align="left">
+<img src="https://i.postimg.cc/t4yJWbcH/chrome-capture-2022-11-15.png" alt="about dev" width="80%"/>
+<img src="https://i.postimg.cc/r0kk9cCp/mobile-10.png" width="18%"/>
+
+----
+<br/>
 
 * Note: *Kedepannya akan dilakukan pengembangan lebih lanjut terkait project web app ini. Terima kasih.*
 
