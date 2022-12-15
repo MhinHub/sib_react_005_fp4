@@ -35,7 +35,7 @@ function Modal() {
 
   const movie = useStore((state: any) => state.movieState)
 
-  console.log('Modal movie', movie)
+  //console.log('Modal movie', movie)
 
   const [trailer, setTrailer] = useState('')
   const [genres, setGenres] = useState<Genre[]>([])
@@ -57,7 +57,7 @@ function Modal() {
   }
 
   useEffect(() => {
-    console.log("Data from modal movie", movie)
+    //console.log("Data from modal movie", movie)
 
     if (!movie) return
 
@@ -66,7 +66,7 @@ function Modal() {
         `https://api.themoviedb.org/3/${movie?.media_type === 'tv' ? 'tv' : 'movie'}/${movie?.id}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&append_to_response=videos`
       )
 
-      console.log('Data api video modal', data)
+      //console.log('Data api video modal', data)
 
       if (data?.videos) {
         const index = data.videos.results.findIndex(
@@ -134,7 +134,7 @@ function Modal() {
     setShowModal(false)
   }
 
-  console.log('trailer ', trailer)
+  //console.log('trailer ', trailer)
 
   return (
     <MuiModal

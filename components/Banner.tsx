@@ -25,7 +25,7 @@ function Banner({ mouveeBanner }: Props) {
   useEffect(() => {
     const interval = setInterval(() => {
       const randomNumber = Math.floor(Math.random() * mouveeBanner.length)
-      console.log('random Number', randomNumber)
+      //console.log('random Number', randomNumber)
 
       setMovie(
         mouveeBanner[randomNumber]

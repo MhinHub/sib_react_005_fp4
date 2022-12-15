@@ -9,7 +9,7 @@ import { Home } from 'iconsax-react'
 const Watchlist = () => {
     const { loading, user } = useAuth()
 
-    console.log('user', user)
+    //console.log('user', user)
 
     const list = useList(user?.uid)
 

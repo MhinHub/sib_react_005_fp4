@@ -24,10 +24,10 @@ interface Props {
 const Detail = ({ movie, credits, similarMovies, reviews }: Props) => {
     const baseUrl = 'https://image.tmdb.org/t/p'
 
-    console.log('Movie Details', movie)
-    console.log('Credits', credits)
-    console.log('Similar Movies', similarMovies)
-    console.log('Reviews', reviews)
+    //console.log('Movie Details', movie)
+    //console.log('Credits', credits)
+    //console.log('Similar Movies', similarMovies)
+    //console.log('Reviews', reviews)
 
     const [deviveType, setDeviceType] = useState('desktop')
 
@@ -131,7 +131,7 @@ const Detail = ({ movie, credits, similarMovies, reviews }: Props) => {
                                         <div className="flex-1 flex-col h-52 overflow-y-scroll scrollbar-all">
                                             {reviews.results.map((review: any) => {
                                                 const oriUrlAvatar: string = review.author_details.avatar_path
-                                                console.log('Wrong Url Avatar', oriUrlAvatar)
+                                                //console.log('Wrong Url Avatar', oriUrlAvatar)
 
                                                 const urlAvatar = String(oriUrlAvatar).includes("https")
                                                     ? String(oriUrlAvatar).substring(1)
@@ -140,7 +140,7 @@ const Detail = ({ movie, credits, similarMovies, reviews }: Props) => {
                                                         : (baseUrl + '/w185' + oriUrlAvatar)
 
 
-                                                console.log('urlAvatar', urlAvatar)
+                                                //console.log('urlAvatar', urlAvatar)
 
                                                 return (
                                                     <div key={review.id} className="flex flex-col w-full bg-glass px-4 py-3 mb-6">
