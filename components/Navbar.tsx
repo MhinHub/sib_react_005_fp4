@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { memo } from 'react'
-import { useRouter } from 'next/router'
+import { usePathname, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { SearchNormal1, Profile, Archive, Home } from 'iconsax-react'
@@ -32,6 +32,8 @@ function Navbar() {
   }, [])
 
   const router = useRouter()
+  const pathname = usePathname()
+
   const [keyword, setKeyword] = useState('')
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
@@ -105,13 +107,13 @@ function Navbar() {
         <div className="flex items-center justify-around p-4">
           <button className="flex flex-col items-center justify-center">
             <Link href="/">
-              <Home variant="Bold" size={35} className={`text-gray-100 ${router.pathname === '/' && 'text-purple-500'}`} />
+              <Home variant="Bold" size={35} className={`${pathname === '/' && 'text-purple-500'}`} />
             </Link>
             <span className="text-xs text-gray-100">Home</span>
           </button>
           <button className="flex flex-col items-center justify-center">
             <Link href="/watchlist">
-              <Archive variant="Bold" size={35} className={`text-gray-100 ${router.pathname === '/watchlist' && 'text-purple-500'}`} />
+              <Archive variant="Bold" size={35} className={`${pathname === '/watchlist' && 'text-purple-500'}`} />
             </Link>
             <span className="text-xs text-gray-100">Watchlist</span>
           </button>
