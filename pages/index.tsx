@@ -85,3 +85,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     },
   }
 }
+
+
+// Develop by Muhaemin Iskandar
