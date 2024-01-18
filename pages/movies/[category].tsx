@@ -35,6 +35,7 @@ export default function Category({
     if (pageActive > totalPages) {
       setPageActive(totalPages)
     }
+    router.push(`/movies/${name}?idc=${idc}&page=${pageActive}`)
   }, [pageActive])
 
   return (
