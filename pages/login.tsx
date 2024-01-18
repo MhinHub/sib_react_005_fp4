@@ -10,6 +10,11 @@ interface Inputs {
 }
 
 function Login() {
+  const initialUser = {
+    email: 'user@mouvee.com',
+    password: 'user123',
+  }
+
   const [login, setLogin] = useState(false)
   const { signIn, signUp } = useAuth()
 
@@ -46,15 +51,15 @@ function Login() {
           src="/static/logo-mouvee.png"
           width={80}
           height={80}
-          className="cursor-pointer object-contain bg-gradient-to-br bg-clip-text from-blue-800 to-purple-800 text-transparent"
-          alt='logo-mouvee'
+          className="cursor-pointer bg-gradient-to-br from-blue-800 to-purple-800 bg-clip-text object-contain text-transparent"
+          alt="logo-mouvee"
         />
-        <p className="text-3xl font-extrabold invisible md:visible">Mouvee</p>
+        <p className="invisible text-3xl font-extrabold md:visible">Mouvee</p>
       </div>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="relative mt-24 space-y-8 rounded-3xl bg-black/75 py-10 px-6 md:mt-0 md:max-w-md md:px-14"
+        className="relative mt-24 space-y-8 rounded-3xl bg-black/75 px-6 py-10 md:mt-0 md:max-w-md md:px-14"
       >
         <h1 className="text-4xl font-semibold">Sign In</h1>
         <div className="space-y-4">
@@ -62,6 +67,7 @@ function Login() {
             <input
               type="email"
               placeholder="Email"
+              defaultValue={initialUser.email}
               className="input"
               {...register('email', { required: true })}
             />
@@ -75,6 +81,7 @@ function Login() {
             <input
               type="password"
               placeholder="Password"
+              defaultValue={initialUser.password}
               className="input"
               {...register('password', { required: true })}
             />
@@ -87,7 +94,7 @@ function Login() {
         </div>
 
         <button
-          className="flex w-2/3 mx-auto rounded-3xl text-center justify-center bg-gradient-to-br from-blue-800 to-purple-800 py-3 font-semibold"
+          className="mx-auto flex w-2/3 justify-center rounded-3xl bg-gradient-to-br from-blue-800 to-purple-800 py-3 text-center font-semibold"
           onClick={() => setLogin(true)}
         >
           Sign In
