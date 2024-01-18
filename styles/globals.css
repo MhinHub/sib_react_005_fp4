@@ -5,7 +5,7 @@
 /* html, body, heading */
 @layer base {
   body {
-    @apply bg-black text-white md:scrollbar-all overscroll-y-none;
+    @apply overflow-x-hidden overscroll-y-none bg-black text-white;
   }
 
   header {
@@ -15,7 +15,7 @@
 
 @layer utilities {
   .scrollbar-all {
-    @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-thumb-gray-300;
+    @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full;
   }
 }
 
@@ -26,20 +26,19 @@
   }
 
   .bannerButton {
-    @apply flex items-center rounded-full text-sm font-semibold transition hover:opacity-75 py-1 px-5 md:text-lg;
+    @apply flex items-center rounded-full px-5 py-1 text-sm font-semibold transition hover:opacity-75 md:text-lg;
   }
 
   .input {
-    @apply w-full rounded-full bg-glass-gray px-5 py-3.5 placeholder-[gray] outline-none focus:bg-[#454545];
+    @apply bg-glass-gray w-full rounded-full px-5 py-3.5 placeholder-[gray] outline-none focus:bg-[#454545];
   }
 
   .modalButton {
-    @apply flex h-11 w-11 items-center justify-center rounded-full transition hover:border-white hover:bg-white/10 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10;
+    @apply flex h-11 w-11 items-center justify-center rounded-full bg-opacity-10 bg-clip-padding backdrop-blur-md backdrop-filter transition hover:border-white hover:bg-white/10;
   }
 
-
   .planBox {
-    @apply relative mx-1.5 flex h-20 w-[calc(100%/3)] cursor-default items-center justify-center rounded-sm bg-[#e50914] font-semibold shadow after:absolute after:top-full after:left-1/2 after:block after:-translate-x-1/2 after:border-8 after:border-b-0 after:border-transparent after:border-t-[#e50914] after:content-[""] md:h-32 lg:mx-8;
+    @apply relative mx-1.5 flex h-20 w-[calc(100%/3)] cursor-default items-center justify-center rounded-sm bg-[#e50914] font-semibold shadow after:absolute after:left-1/2 after:top-full after:block after:-translate-x-1/2 after:border-8 after:border-b-0 after:border-transparent after:border-t-[#e50914] after:content-[""] md:h-32 lg:mx-8;
   }
 
   /* Table */
@@ -77,15 +76,15 @@
   }
 
   .bg-glass {
-    @apply bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10;
+    @apply bg-opacity-10 bg-clip-padding backdrop-blur-md backdrop-filter;
   }
 
   .bg-glass-gray {
-    @apply bg-gray-300 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10;
+    @apply bg-gray-300 bg-opacity-10 bg-clip-padding backdrop-blur-md backdrop-filter;
   }
 
-  .badge-glass-text{
-    @apply flex h-fit px-2 py-[2px] rounded-full !bg-opacity-40 font-normal text-xs;
+  .badge-glass-text {
+    @apply flex h-fit rounded-full !bg-opacity-40 px-2 py-[2px] text-xs font-normal;
   }
 
   .clip-circle {
@@ -93,7 +92,7 @@
   }
 
   .nav-bottom {
-    @apply fixed bottom-0 left-0 right-0 z-50 h-[10vh] w-full md:hidden bg-gray-300 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 rounded-t-3xl;
+    @apply fixed bottom-0 left-0 right-0 z-50 h-[10vh] w-full rounded-t-3xl bg-gray-300 bg-opacity-10 bg-clip-padding backdrop-blur-md backdrop-filter md:hidden;
   }
 }
 
